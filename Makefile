@@ -1,5 +1,5 @@
 SRCS = so_long.c ft_check_map.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		ft_init_game.c
+		ft_init_game.c ft_move_player.c
 
 
 OBJS = ${SRCS:.c=.o}
