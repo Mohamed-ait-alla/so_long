@@ -7,7 +7,7 @@ OBJS = ${SRCS:.c=.o}
 
 NAME = libft.a
 CC = cc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 MLX = -Lmlx -lmlx -lXext -lX11
 
