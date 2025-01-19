@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/17 11:44:35 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:30:11 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_win()
 {
-	printf("You Win!...\n");
+	ft_printf("You Win!...\n");
 	exit(1);
 }
 
@@ -25,46 +25,44 @@ static void	ft_load_sprites(t_mlx_data *mlx)
 
 	size = SIZE;
 	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/wall.xpm", &size, &size);
-	mlx->sprites.player_closed = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_closed.xpm", &size, &size);
-	mlx->sprites.player_right_open = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_open_right.xpm", &size, &size);
-	mlx->sprites.player_left_open = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_open_left.xpm", &size, &size);
-	mlx->sprites.player_up_open = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_open_up.xpm", &size, &size);
-	mlx->sprites.player_down_open = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_open_down.xpm", &size, &size);
-	mlx->sprites.player_semi_up = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_semi_up.xpm", &size, &size);
-	mlx->sprites.player_semi_down = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_semi_down.xpm", &size, &size);
-	mlx->sprites.player_semi_right = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_semi_right.xpm", &size, &size);
-	mlx->sprites.player_semi_left = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_semi_left.xpm", &size, &size);
 	mlx->sprites.exit = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/exit.xpm", &size, &size);
 	mlx->sprites.food = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pacdot_food.xpm", &size, &size);
 	mlx->sprites.black_wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/black.xpm", &size, &size);
+	mlx->sprites.ghost_up = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_up1.xpm", &size, &size);
 }
 
-void	ft_init_game(char **map, t_mlx_data *mlx)
+void	ft_init_game(t_mlx_data *mlx)
 {
 	int			i;
 	int			j;
 
 	ft_load_sprites(mlx);
 	i = 0;
-	while (map[i])
+	while (mlx->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (mlx->map[i][j])
 		{
-			if (map[i][j] == '1')
+			if (mlx->map[i][j] == '1')
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.wall, j * SIZE,i * SIZE);
-			if (map[i][j] == 'P')
+			if (mlx->map[i][j] == 'P')
 			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.player_closed, j * SIZE, i * SIZE);
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_actions[0][0], j * SIZE, i * SIZE);
 				mlx->player_pos_x = j;
 				mlx->player_pos_y = i;
 			}
-			if (map[i][j] == 'E')
+			if (mlx->map[i][j] == 'E')
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.exit, j * SIZE, i * SIZE);
-			if (map[i][j] == 'C')
+			if (mlx->map[i][j] == 'C')
 			{
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.food, j * SIZE, i * SIZE);
 				mlx->n_of_collectibles++;
+			}
+			if (mlx->map[i][j] == 'G')
+			{
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up, j * SIZE, i * SIZE);
+				mlx->ghost_pos_x = j;
+				mlx->ghost_pos_y = i;
 			}
 			j++;
 		}

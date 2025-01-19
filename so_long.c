@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/17 15:58:02 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:30:42 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_init_mlx_list(t_mlx_data *mlx)
 
 	size = SIZE;
 	mlx->n_of_collectibles = 0;
+	mlx->n_of_moves = 0;
 	mlx->n_check = 0;
 	mlx->direction = 0;
 	mlx->player_actions[0][0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_closed.xpm", &size, &size);
@@ -58,7 +59,7 @@ int	main(int ac, char **av)
 	mlx.mlx_window = mlx_new_window(mlx.mlx_ptr, frame.n_col * SIZE, frame.n_row * SIZE, "first window");
 	ft_init_mlx_list(&mlx);
 	ft_check_error_map(mlx.map);
-	ft_init_game(mlx.map, &mlx);
+	ft_init_game(&mlx);
 	mlx_loop_hook(mlx.mlx_ptr, ft_animation,&mlx);
 	mlx_hook(mlx.mlx_window, 17, 0, close_window_with_x, &mlx);
 	mlx_hook(mlx.mlx_window, 2, 1L << 0, ft_move_player, &mlx);

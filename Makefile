@@ -1,5 +1,5 @@
 SRCS = so_long.c ft_check_map.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		ft_init_game.c ft_move_player.c
+		./ft_printf/ft_printf.c ./ft_printf/ft_printf_utils.c ft_init_game.c ft_move_player.c ft_ghost.c
 
 
 OBJS = ${SRCS:.c=.o}
@@ -9,17 +9,16 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-MLX = -Lmlx -lmlx -lXext -lX11
+MLX = -lmlx -lXext -lX11
 
 all: ${NAME}
 
 LIB:
 	make -C ./libft
-	cp ./libft/libft.a $(NAME)
 
 
 ${NAME}: LIB ${OBJS}
-		${CC} ${CFLAGS} ${OBJS} libft.a ${MLX} -o so_long
+		${CC} ${CFLAGS} ${OBJS} -Llibft -lft ${MLX} -o so_long
 
 
 clean:
