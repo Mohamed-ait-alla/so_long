@@ -6,22 +6,15 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/15 10:38:09 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:29:04 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	ft_free_map(char **map, int i)
-{
-	while (i--)
-		free(map[i]);
-	free(map);
-}
-
 void	ft_error() 
 {
-	write(2, "Error\n", 6);
+	ft_printf("map is not valid!\n");
 	exit(1);
 }
 
@@ -31,30 +24,14 @@ int	ft_open_fd(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
-		printf("failed to open file descriptor\n");
+		ft_printf("failed to open file descriptor\n");
 	return (fd);
 }
 
 void	ft_check_error_map(char **map)
 {
-	int	i;
-	int	j;
-	int	check;
-	
-	i = 0;
-	check = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'E')
-				check++;
-			j++;
-		}
-		i++;
-	}
-	if (check != 1)
+
+	if (!check_epc_in_map(map))
 		ft_error();
 }
 

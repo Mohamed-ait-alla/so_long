@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/19 17:29:53 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:46:21 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	ft_move_up(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 			ft_win();
 		else if (mlx->map[new_pos_y][new_pos_x] != 'E' || mlx->n_of_collectibles == mlx->n_check)
 		{
+			mlx->n_of_moves++;
 			mlx->direction = 1;
 			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
 			mlx->player_pos_x = new_pos_x;
@@ -69,6 +70,7 @@ static void	ft_move_down(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 			ft_win();
 		else if (mlx->map[new_pos_y][new_pos_x] != 'E' || mlx->n_of_collectibles == mlx->n_check)
 		{
+			mlx->n_of_moves++;
 			mlx->direction = 3;
 			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
 			mlx->player_pos_x = new_pos_x;
@@ -92,6 +94,7 @@ static void	ft_move_right(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 			ft_win();
 		else if (mlx->map[new_pos_y][new_pos_x] != 'E' || mlx->n_of_collectibles == mlx->n_check)
 		{
+			mlx->n_of_moves++;
 			mlx->direction = 0;
 			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
 			mlx->player_pos_x = new_pos_x;
@@ -116,6 +119,7 @@ static void	ft_move_left(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 			ft_win();
 		else if (mlx->map[new_pos_y][new_pos_x] != 'E' || mlx->n_of_collectibles == mlx->n_check)
 		{
+			mlx->n_of_moves++;
 			mlx->direction = 2;
 			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
 			mlx->player_pos_x = new_pos_x;
@@ -131,16 +135,15 @@ int	ft_move_player(int keycode, t_mlx_data *mlx)
 
 	new_pos_x = mlx->player_pos_x;
 	new_pos_y = mlx->player_pos_y;
-	mlx->n_of_moves++;
 	if (keycode == XK_Escape)
 		close_window_with_x(mlx);
-	if (keycode == XK_w)
+	if (keycode == XK_w || keycode == XK_Up)
 		ft_move_up(mlx, new_pos_x, new_pos_y);
-	if (keycode == XK_d)
+	if (keycode == XK_d || keycode == XK_Right)
 		ft_move_right(mlx, new_pos_x, new_pos_y);
-	if (keycode == XK_s)
+	if (keycode == XK_s || keycode == XK_Down)
 		ft_move_down(mlx, new_pos_x, new_pos_y);
-	if (keycode == XK_a)
+	if (keycode == XK_a || keycode == XK_Left)
 		ft_move_left(mlx, new_pos_x, new_pos_y);
 	ft_printf("number of movements: %d |\n", mlx->n_of_moves);
 	return (0);
