@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/20 10:29:04 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:37:49 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	ft_open_fd(char *file)
 
 void	ft_check_error_map(char **map)
 {
-
-	if (!check_epc_in_map(map))
+	if (!is_epc_in_map(map) || !is_map_rectangular(map))
 		ft_error();
 }
 
@@ -58,14 +57,14 @@ char	**ft_read_map(char *file, t_frame *frame)
 	return (map);
 }
 
-void	ft_calc_width_and_height(char	*file, t_frame *frame)
+void	ft_calc_width_and_height(char *file, t_frame *frame)
 {
-	int	fd;
-	int	count;
+	int		fd;
+	int		count;
 
 	count = 0;
 	fd = ft_open_fd(file);
-	frame->n_col = ft_strlen(get_next_line(fd)) - 1;
+	frame->n_col = ft_strlen(get_next_line(fd));
 	while (get_next_line(fd))
 		count++;
 	frame->n_row = count + 1;

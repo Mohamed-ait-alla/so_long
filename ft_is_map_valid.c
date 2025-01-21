@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/20 10:22:40 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:25:53 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_init(int *i, int *check_e, int *check_p, int *check_c)
 	*check_c = 0;
 }
 
-int	check_epc_in_map(char **map)
+int	is_epc_in_map(char **map)
 {
 	int	i;
 	int	j;
@@ -49,4 +49,25 @@ int	check_epc_in_map(char **map)
 	return (1);
 }
 
+int	is_map_rectangular(char **map)
+{
+	int first_row_len;
+	int	i;
 
+	first_row_len = ft_strlen(map[0]) - 1;
+	i = 1;
+	while (map[i])
+	{
+		if (map[i][ft_strlen(map[i]) - 1] != '\n')
+		{
+			if ((int)ft_strlen(map[i]) != first_row_len)
+				return (0);
+			i++;
+		}
+		else if ((int)ft_strlen(map[i]) - 1 != first_row_len)
+			return (0);
+		else
+			i++;
+	}
+	return (1);
+}

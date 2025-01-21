@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 09:51:18 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/08 18:42:27 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:58:25 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	new = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	new = (char *)malloc((ft_gnlstrlen(s1) + ft_gnlstrlen(s2) + 1) * sizeof(char));
 	if (!new)
 		return (NULL);
 	i = 0;
@@ -53,12 +53,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_gnlstrlen(const char *s)
 {
 	size_t	len;
 
 	len = 0;
-	while (s[len])
+	while (s[len] && s)
 		len++;
 	return (len);
 }
@@ -70,15 +70,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (ft_strlen(s) < start)
+	if (ft_gnlstrlen(s) < start)
 		return (ft_strdup(""));
-	if (len > (ft_strlen(s) - start))
-		len = ft_strlen(s) - start;
+	if (len > (ft_gnlstrlen(s) - start))
+		len = ft_gnlstrlen(s) - start;
 	sub = (char *)malloc((len + 1) * sizeof(char));
 	if (!sub)
 		return (NULL);
 	i = 0;
-	while (i < len && start < ft_strlen(s))
+	while (i < len && start < ft_gnlstrlen(s))
 	{
 		*(sub + i) = *(s + start);
 		start++;
@@ -95,7 +95,7 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 
 	i = 0;
-	size = ft_strlen(s1);
+	size = ft_gnlstrlen(s1);
 	new = (char *)malloc(sizeof(char) * (size + 1));
 	if (!new)
 		return (NULL);
