@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/20 10:40:29 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:54:39 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_mlx_data
 	t_sprites	sprites;
 }	t_mlx_data;
 
+int	is_map_closed_by_walls(char **map);
 int	is_map_rectangular(char **map);
 int	is_epc_in_map(char **map);
 void	ft_free_map(char **map, int i);
