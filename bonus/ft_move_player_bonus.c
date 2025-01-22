@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/19 17:46:21 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:16:28 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	ft_animation(t_mlx_data *mlx)
 static void	ft_move_up(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 {
 	new_pos_y--;
-	ft_check_distance_with_ghosts(mlx, new_pos_x, new_pos_y);
 	if (mlx->map[new_pos_y][new_pos_x] == 'C')
 	{
 		mlx->map[new_pos_y][new_pos_x] = '0';
@@ -57,7 +56,6 @@ static void	ft_move_up(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 static void	ft_move_down(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 {
 	new_pos_y++;
-	ft_check_distance_with_ghosts(mlx, new_pos_x, new_pos_y);
 	if (mlx->map[new_pos_y][new_pos_x] == 'C')
 	{
 		mlx->map[new_pos_y][new_pos_x] = '0';
@@ -82,7 +80,6 @@ static void	ft_move_down(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 static void	ft_move_right(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 {
 	new_pos_x++;
-	ft_check_distance_with_ghosts(mlx, new_pos_x, new_pos_y);
 	if (mlx->map[new_pos_y][new_pos_x] == 'C')
 	{
 		mlx->map[new_pos_y][new_pos_x] = '0';
@@ -106,7 +103,6 @@ static void	ft_move_right(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 static void	ft_move_left(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 {
 	new_pos_x--;
-	ft_check_distance_with_ghosts(mlx, new_pos_x, new_pos_y);
 	if (mlx->map[new_pos_y][new_pos_x] == 'C')
 	{
 		mlx->map[new_pos_y][new_pos_x] = '0';

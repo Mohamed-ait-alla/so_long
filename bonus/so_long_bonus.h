@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/21 10:54:39 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:07:04 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <mlx.h>
-#include "./get_next_line/get_next_line.h"
-#include "./ft_printf/ft_printf.h"
-#include "./libft/libft.h"
+#include "../get_next_line/get_next_line.h"
+#include "../ft_printf/ft_printf.h"
+#include "../libft/libft.h"
 #include <X11/keysym.h>
 
 typedef struct  s_img_data
@@ -73,7 +73,6 @@ int	is_map_closed_by_walls(char **map);
 int	is_map_rectangular(char **map);
 int	is_epc_in_map(char **map);
 void	ft_free_map(char **map, int i);
-int	ft_check_distance_with_ghosts(t_mlx_data *mlx, int P_new_pos_x, int P_new_pos_y);
 int	ft_animation(t_mlx_data *mlx);
 void	ft_win();
 int		close_window_with_x(t_mlx_data *data);

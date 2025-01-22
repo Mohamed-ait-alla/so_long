@@ -1,6 +1,13 @@
-SRCS = so_long.c ft_check_map.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c \
-		./ft_printf/ft_printf.c ./ft_printf/ft_printf_utils.c ft_init_game.c ft_move_player.c ft_ghost.c \
-		ft_clear.c ft_is_map_valid.c 
+SRCS = srcs/so_long.c \
+		srcs/ft_check_map.c \
+		./get_next_line/get_next_line.c \
+		./get_next_line/get_next_line_utils.c \
+		./ft_printf/ft_printf.c \
+		./ft_printf/ft_printf_utils.c \
+		srcs/ft_init_game.c \
+		srcs/ft_move_player.c \
+		srcs/ft_clear.c \
+		srcs/ft_is_map_valid.c 
 
 
 OBJS = ${SRCS:.c=.o}
@@ -17,9 +24,8 @@ all: ${NAME}
 LIB:
 	make -C ./libft
 
-
 ${NAME}: LIB ${OBJS}
-		${CC} ${CFLAGS} ${OBJS} -Llibft -lft ${MLX} -o so_long
+		${CC} ${CFLAGS} ${OBJS}	-Llibft -lft ${MLX} -o so_long
 
 
 clean:
