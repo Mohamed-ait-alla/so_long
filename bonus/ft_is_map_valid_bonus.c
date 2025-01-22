@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_map_valid.c                                  :+:      :+:    :+:   */
+/*   ft_is_map_valid_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/21 11:07:57 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:21:00 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	ft_init(int *i, int *check_e, int *check_p, int *check_c)
 {
