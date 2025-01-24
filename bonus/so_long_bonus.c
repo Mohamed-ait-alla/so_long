@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/23 21:16:07 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:08:56 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_init_mlx_list(t_mlx_data *mlx)
 	mlx->n_of_moves = 0;
 	mlx->n_check = 0;
 	mlx->direction = 0;
+	mlx->n_of_ghosts = 0;
+	mlx->wanted_ghost = 0;
 	mlx->player_actions[0][0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_closed.xpm", &size, &size);
 	mlx->player_actions[0][1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_semi_right.xpm", &size, &size);
 	mlx->player_actions[0][2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_open_right.xpm", &size, &size);
@@ -33,7 +35,6 @@ void	ft_init_mlx_list(t_mlx_data *mlx)
 	mlx->player_actions[3][0] = mlx->player_actions[0][0];
 	mlx->player_actions[3][1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_semi_down.xpm", &size, &size);
 	mlx->player_actions[3][2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pac_open_down.xpm", &size, &size);
-
 }
 
 int close_window_with_x(t_mlx_data *data)

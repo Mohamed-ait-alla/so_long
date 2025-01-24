@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/23 14:59:06 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:07:32 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,16 @@ typedef struct s_sprites
 	void	*exit;
 }	t_sprites;
 
+typedef struct s_ghost {
+	int	n_pos_x;
+	int	n_pos_y;
+	int	old_pos_x;
+	int	old_pos_y;
+	int	direction;
+	void	*c_sprite;
+	int	c_frame;
+}	t_ghost;
+
 typedef struct s_mlx_data
 {
 	void		*mlx_ptr;
@@ -72,7 +82,10 @@ typedef struct s_mlx_data
 	int			n_of_collectibles;
 	int			n_of_moves;
 	int			n_check;
+	int			wanted_ghost;
 	int			direction;
+	int			n_of_ghosts;
+	t_ghost		*ghosts;
 	t_sprites	sprites;
 }	t_mlx_data;
 
