@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/22 10:21:05 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/23 21:09:31 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,27 @@ void	ft_win()
 	exit(1);
 }
 
+void	ft_lose()
+{
+	ft_printf("Oops! You Lose...");
+	exit(1);
+}
+
 
 static void	ft_load_sprites(t_mlx_data *mlx)
 {
 	int	size;
 
 	size = SIZE;
-	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/wall.xpm", &size, &size);
+	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/wall.xpm", &size, &size); // if (image == NULL) return error;
 	mlx->sprites.exit = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/exit.xpm", &size, &size);
 	mlx->sprites.food = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pacdot_food.xpm", &size, &size);
 	mlx->sprites.black_wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/black.xpm", &size, &size);
 	mlx->sprites.ghost_up = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_up1.xpm", &size, &size);
+	mlx->sprites.ghost_down = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_down1.xpm", &size, &size);
+	mlx->sprites.ghost_right = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_right1.xpm", &size, &size);
+	mlx->sprites.ghost_left = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_left1.xpm", &size, &size);
+	mlx->sprites.ghost_panic1 = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_right2.xpm", &size, &size);
 }
 
 void	ft_init_game(t_mlx_data *mlx)
@@ -62,7 +72,7 @@ void	ft_init_game(t_mlx_data *mlx)
 			{
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up, j * SIZE, i * SIZE);
 				mlx->ghost_pos_x = j;
-				mlx->ghost_pos_y = i;
+				mlx->ghost_pos_y = i;                                                                                                                                                                                                                                                   
 			}
 			j++;
 		}

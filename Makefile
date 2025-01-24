@@ -14,18 +14,21 @@ BSCRS = bonus/so_long_bonus.c \
 		bonus/ft_clear_bonus.c \
 		bonus/ft_init_game_bonus.c \
 		bonus/ft_ghost_bonus.c \
-		bonus/ft_is_map_valid.c \
+		bonus/ft_is_map_valid_bonus.c \
 		bonus/ft_move_player_bonus.c \
 		./get_next_line/get_next_line.c \
 		./get_next_line/get_next_line_utils.c \
 		./ft_printf/ft_printf.c \
 		./ft_printf/ft_printf_utils.c
 
+
 OBJS = ${SRCS:.c=.o}
 BOBJS = ${BSCRS:.c=.o}
 
 
 NAME = libft.a
+B_NAME = libft.a
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
@@ -33,7 +36,7 @@ MLX = -lmlx -lXext -lX11
 
 all: ${NAME}
 
-bonus: ${BONUS}
+bonus: ${B_NAME}
 
 LIB:
 	make -C ./libft
@@ -41,8 +44,8 @@ LIB:
 ${NAME}: LIB ${OBJS}
 		${CC} ${CFLAGS} ${OBJS}	-Llibft -lft ${MLX} -o so_long
 
-${BONUS}: LIB ${BOBJS}
-		  ${CC} ${CFLAGS} ${BOBJS} -Llibft -lft ${MLX} -o so_long_bonus
+${B_NAME}: LIB ${BOBJS}
+		${CC} ${CFLAGS} ${BOBJS} -Llibft -lft ${MLX} -o so_long_bonus
 
 
 clean:
@@ -52,6 +55,7 @@ clean:
 
 fclean: clean
 		${RM} ${NAME}
+		${RM} ${B_NAME}
 		${RM} so_long
 		${RM} so_long_bonus
 		${RM} ./libft/libft.a

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/22 10:21:00 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:42:37 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,26 @@ int	is_map_closed_by_walls(char **map)
 			if ((i == 0 && map[i][j] != '1') || (i == (len_row - 1) && map[i][j] != '1'))
 				return (0);
 			else if ((j == 0 && map[i][j] != '1') || (j == (len_col - 1) && map[i][j] != '1'))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	is_map_has_other_chars(char **map)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j] && map[i][j] != '\n')
+		{
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != 'G')
 				return (0);
 			j++;
 		}
