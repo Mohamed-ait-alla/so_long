@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 10:23:41 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:46:58 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,32 @@
 
 void	ft_win()
 {
-	ft_printf("You Win!...\n");
+	ft_printf("\n╔══════════════════════════════════════════╗\n");
+	ft_printf("║         🎉 Congratulations! 🎉           ║\n");
+	ft_printf("║     You're Boss, You Won the Game! 🎯    ║\n");
+	ft_printf("╚══════════════════════════════════════════╝\n\n");
+	ft_printf("\n╔══════════════════════════════════════╗\n");
+	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf("║        \033[1m🌟 mait-all 🌟\033[0m                ║\n");
+	ft_printf("╠══════════════════════════════════════╣\n");
+	ft_printf("║     Thank you for playing! 🎮        ║\n");
+	ft_printf("╚══════════════════════════════════════╝\n\n");
+
 	exit(1);
 }
 
 void	ft_lose()
 {
-	ft_printf("Oops! You Lose...");
+	ft_printf("\n╔══════════════════════════════╗\n");
+	ft_printf("║       💀 Oops! 💀            ║\n");
+	ft_printf("║   You're Noop, Game Over!    ║\n");
+	ft_printf("╚══════════════════════════════╝\n\n");
+	ft_printf("\n╔══════════════════════════════════════╗\n");
+	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf("║        \033[1m🌟 mait-all 🌟\033[0m                ║\n");
+	ft_printf("╠══════════════════════════════════════╣\n");
+	ft_printf("║     Thank you for playing! 🎮        ║\n");
+	ft_printf("╚══════════════════════════════════════╝\n\n");
 	exit(1);
 }
 
@@ -38,7 +57,6 @@ static void	ft_load_sprites(t_mlx_data *mlx)
 	mlx->sprites.ghost_down = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_down1.xpm", &size, &size);
 	mlx->sprites.ghost_right = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_right1.xpm", &size, &size);
 	mlx->sprites.ghost_left = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_left1.xpm", &size, &size);
-	mlx->sprites.ghost_panic1 = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_right2.xpm", &size, &size);
 }
 
 static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)

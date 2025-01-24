@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:31:44 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 11:02:40 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:06:21 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,14 @@ int	ft_check_distance_with_ghosts(t_mlx_data *mlx, int P_new_pos_x, int P_new_po
 	while (i < mlx->n_of_ghosts)
 	{
 		if ((abs(mlx->ghosts[i].old_pos_x - P_new_pos_x) + abs(mlx->ghosts[i].old_pos_y - P_new_pos_y)) == 0)
-			ft_lose();
+		{
+			mlx->is_died = 0;
+		}
 		if ((abs(mlx->ghosts[i].old_pos_x - P_new_pos_x) + abs(mlx->ghosts[i].old_pos_y - P_new_pos_y)) < 3)
+		{
+			mlx->wanted_ghost = i;	
 			return (0);
+		}
 		i++;	
 	}
 	

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 11:07:32 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:05:12 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_sprites
 	void	*ghost_down;
 	void	*ghost_right;
 	void	*ghost_left;
-	void	*ghost_panic1;
 	void	*food;
 	void	*exit;
 }	t_sprites;
@@ -73,6 +72,7 @@ typedef struct s_mlx_data
 	void		*mlx_window;
 	char		**map;
 	char		*player_actions[4][3];
+	char		*player_dying[11];
 	int			player_pos_x;
 	int			player_pos_y;
 	int			ghost_pos_x;
@@ -83,12 +83,14 @@ typedef struct s_mlx_data
 	int			n_of_moves;
 	int			n_check;
 	int			wanted_ghost;
+	int			is_died;
 	int			direction;
 	int			n_of_ghosts;
 	t_ghost		*ghosts;
 	t_sprites	sprites;
 }	t_mlx_data;
 
+void	ft_player_dying_animation(t_mlx_data *mlx);
 int	is_map_has_other_chars(char **map);
 int	is_map_closed_by_walls(char **map);
 int	is_map_rectangular(char **map);

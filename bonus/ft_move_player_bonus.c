@@ -6,13 +6,32 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 11:01:01 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:22:36 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
 
+void	ft_player_dying_animation(t_mlx_data *mlx)
+{
+    static int frame = 0;
+    static int delay = 0;
+
+	if (mlx->is_died == 0)
+	{
+    	if (delay++ % 15000 == 0)    
+    	{
+        	if (frame < 10)
+        	{
+            	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_dying[frame], mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
+            	frame++;            
+        	}
+        	else
+				ft_lose();
+    	}
+	}
+}
 
 void	ft_chase_player(t_mlx_data *mlx)
 {
@@ -23,50 +42,31 @@ void	ft_chase_player(t_mlx_data *mlx)
 	i = 0;
 	while (i < mlx->n_of_ghosts)
 	{
-		diff_x = mlx->player_pos_x - mlx->ghosts[i].old_pos_x;
-		diff_y = mlx->player_pos_y - mlx->ghosts[i].old_pos_y;
-		if (abs(diff_x) > abs(diff_y))
+		if (mlx->wanted_ghost == i)
 		{
-			if (diff_x > 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x + 1] != '1')
-				mlx->ghosts[i].n_pos_x++;
-			else if (diff_x < 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x - 1] != '1')
-				mlx->ghosts[i].n_pos_x--;			
+			diff_x = mlx->player_pos_x - mlx->ghosts[i].old_pos_x;
+			diff_y = mlx->player_pos_y - mlx->ghosts[i].old_pos_y;
+			if (abs(diff_x) > abs(diff_y))
+			{
+				if (diff_x > 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x + 1] != '1')
+					mlx->ghosts[i].n_pos_x++;
+				else if (diff_x < 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x - 1] != '1')
+					mlx->ghosts[i].n_pos_x--;			
+			}
+			else 
+			{
+				if (diff_y > 0 && mlx->map[mlx->ghosts[i].old_pos_y + 1][mlx->ghosts[i].old_pos_x] != '1')
+					mlx->ghosts[i].n_pos_y++;
+				else if (diff_y < 0 && mlx->map[mlx->ghosts[i].old_pos_y - 1][mlx->ghosts[i].old_pos_x] != '1')
+					mlx->ghosts[i].n_pos_y--;		
+			}
+			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left, mlx->ghosts[i].n_pos_x * SIZE, mlx->ghosts[i].n_pos_y * SIZE);
+			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
+			mlx->ghosts[i].old_pos_x = mlx->ghosts[i].n_pos_x;
+			mlx->ghosts[i].old_pos_y = mlx->ghosts[i].n_pos_y;
 		}
-		else 
-		{
-			if (diff_y > 0 && mlx->map[mlx->ghosts[i].old_pos_y + 1][mlx->ghosts[i].old_pos_x] != '1')
-				mlx->ghosts[i].n_pos_y++;
-			else if (diff_y < 0 && mlx->map[mlx->ghosts[i].old_pos_y - 1][mlx->ghosts[i].old_pos_x] != '1')
-				mlx->ghosts[i].n_pos_y--;		
-		}
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left, mlx->ghosts[i].n_pos_x * SIZE, mlx->ghosts[i].n_pos_y * SIZE);
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
-		mlx->ghosts[i].old_pos_x = mlx->ghosts[i].n_pos_x;
-		mlx->ghosts[i].old_pos_y = mlx->ghosts[i].n_pos_y;
 		i++;
 	}
-	// mlx->old_ghost_pos_x = mlx->ghost_pos_x;
-	// mlx->old_ghost_pos_y = mlx->ghost_pos_y;
-	// diff_x = mlx->player_pos_x - mlx->ghost_pos_x;
-	// diff_y = mlx->player_pos_y - mlx->ghost_pos_y;
-	// if (abs(diff_x) > abs(diff_y))
-	// {
-	// 	if (diff_x > 0 && mlx->map[mlx->ghost_pos_y][mlx->ghost_pos_x + 1] != '1')
-	// 		mlx->ghost_pos_x++;
-	// 	else if (diff_x < 0 && mlx->map[mlx->ghost_pos_y][mlx->ghost_pos_x - 1] != '1')
-	// 		mlx->ghost_pos_x--;
-	// }
-	// else
-	// {
-	// 	if (diff_y > 0 && mlx->map[mlx->ghost_pos_y + 1][mlx->ghost_pos_x] != '1')
-	// 		mlx->ghost_pos_y++;
-	// 	else if (diff_y < 0 && mlx->map[mlx->ghost_pos_y - 1][mlx->ghost_pos_x] != '1')
-	// 		mlx->ghost_pos_y--;
-	// }
-	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left, mlx->ghost_pos_x * SIZE, mlx->ghost_pos_y * SIZE);
-	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->old_ghost_pos_x * SIZE, mlx->old_ghost_pos_y * SIZE);
-	// mlx->old_ghost_pos_x = mlx->ghost_pos_x;
-	// mlx->old_ghost_pos_y = mlx->ghost_pos_y;
 }
 
 void	ft_ghost_anim(t_mlx_data *mlx)
@@ -74,6 +74,9 @@ void	ft_ghost_anim(t_mlx_data *mlx)
 	static int i = 0;
 	int j = 0;
 	i++;
+
+	if (mlx->is_died == 0)
+		return ;
 	if (!ft_check_distance_with_ghosts(mlx, mlx->player_pos_x, mlx->player_pos_y))
 	{
 		if (i == 1000)
@@ -102,6 +105,9 @@ int	ft_animation(t_mlx_data *mlx)
 	static int	frame_counter = 0;
 	frame_counter++;
 	ft_ghost_anim(mlx);
+	ft_player_dying_animation(mlx);
+	if (mlx->is_died == 0)
+		return (0);
 	if (frame_counter == 25999)
 	{
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_actions[mlx->direction][0], mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
