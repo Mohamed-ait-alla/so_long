@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 16:05:12 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/25 10:54:31 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ typedef struct s_sprites
 	void	*player_semi_down;
 	void	*player_semi_right;
 	void	*player_semi_left;
-	void	*ghost_up;
-	void	*ghost_down;
-	void	*ghost_right;
-	void	*ghost_left;
+	void	*ghost_up[4];
+	void	*ghost_down[4];
+	void	*ghost_right[4];
+	void	*ghost_left[4];
 	void	*food;
 	void	*exit;
 }	t_sprites;
@@ -61,9 +61,7 @@ typedef struct s_ghost {
 	int	n_pos_y;
 	int	old_pos_x;
 	int	old_pos_y;
-	int	direction;
-	void	*c_sprite;
-	int	c_frame;
+	int	c_index;
 }	t_ghost;
 
 typedef struct s_mlx_data

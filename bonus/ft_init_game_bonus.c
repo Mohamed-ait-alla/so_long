@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 16:46:58 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:12:45 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,24 @@ void	ft_win()
 	ft_printf("╚══════════════════════════════════════════╝\n\n");
 	ft_printf("\n╔══════════════════════════════════════╗\n");
 	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf("║        \033[1m🌟 mait-all 🌟\033[0m                ║\n");
+	ft_printf("║            \033[1m🌟 mait-all 🌟\033[0m            ║\n");
 	ft_printf("╠══════════════════════════════════════╣\n");
-	ft_printf("║     Thank you for playing! 🎮        ║\n");
+	ft_printf("║       Thank you for playing! 🎮      ║\n");
 	ft_printf("╚══════════════════════════════════════╝\n\n");
-
 	exit(1);
 }
 
 void	ft_lose()
 {
 	ft_printf("\n╔══════════════════════════════╗\n");
-	ft_printf("║       💀 Oops! 💀            ║\n");
+	ft_printf("║          💀 Oops! 💀         ║\n");
 	ft_printf("║   You're Noop, Game Over!    ║\n");
 	ft_printf("╚══════════════════════════════╝\n\n");
 	ft_printf("\n╔══════════════════════════════════════╗\n");
 	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf("║        \033[1m🌟 mait-all 🌟\033[0m                ║\n");
+	ft_printf("║            \033[1m🌟 mait-all 🌟\033[0m            ║\n");
 	ft_printf("╠══════════════════════════════════════╣\n");
-	ft_printf("║     Thank you for playing! 🎮        ║\n");
+	ft_printf("║       Thank you for playing! 🎮      ║\n");
 	ft_printf("╚══════════════════════════════════════╝\n\n");
 	exit(1);
 }
@@ -49,14 +48,26 @@ static void	ft_load_sprites(t_mlx_data *mlx)
 	int	size;
 
 	size = SIZE;
-	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/wall.xpm", &size, &size); // if (image == NULL) return error;
-	mlx->sprites.exit = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/exit.xpm", &size, &size);
-	mlx->sprites.food = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pacdot_food.xpm", &size, &size);
-	mlx->sprites.black_wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/black.xpm", &size, &size);
-	mlx->sprites.ghost_up = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_up1.xpm", &size, &size);
-	mlx->sprites.ghost_down = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_down1.xpm", &size, &size);
-	mlx->sprites.ghost_right = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_right1.xpm", &size, &size);
-	mlx->sprites.ghost_left = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghost_left1.xpm", &size, &size);
+	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/wall.xpm", &size, &size); // if (image == NULL) return error;
+	mlx->sprites.exit = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/exit.xpm", &size, &size);
+	mlx->sprites.food = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/pacdot_food.xpm", &size, &size);
+	mlx->sprites.black_wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/black.xpm", &size, &size);
+	mlx->sprites.ghost_up[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_up.xpm", &size, &size);
+	mlx->sprites.ghost_up[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_up.xpm", &size, &size);
+	mlx->sprites.ghost_up[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_up.xpm", &size, &size);
+	mlx->sprites.ghost_up[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_up.xpm", &size, &size);
+	mlx->sprites.ghost_down[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_down.xpm", &size, &size);
+	mlx->sprites.ghost_down[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_down.xpm", &size, &size);
+	mlx->sprites.ghost_down[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_down.xpm", &size, &size);
+	mlx->sprites.ghost_down[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_down.xpm", &size, &size);
+	mlx->sprites.ghost_right[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_right.xpm", &size, &size);
+	mlx->sprites.ghost_right[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_right.xpm", &size, &size);
+	mlx->sprites.ghost_right[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_right.xpm", &size, &size);
+	mlx->sprites.ghost_right[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_right.xpm", &size, &size);
+	mlx->sprites.ghost_left[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_left.xpm", &size, &size);
+	mlx->sprites.ghost_left[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_left.xpm", &size, &size);
+	mlx->sprites.ghost_left[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_left.xpm", &size, &size);
+	mlx->sprites.ghost_left[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_left.xpm", &size, &size);
 }
 
 static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
@@ -83,10 +94,10 @@ void	ft_init_game(t_mlx_data *mlx)
 	int			i;
 	int			j;
 	int			x;
+	int			y;
 
 	ft_load_sprites(mlx);
 	ft_calc_number_of_ghosts(mlx);
-	printf("n=%d\n", mlx->n_of_ghosts);
 	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
 	if (!mlx->ghosts)
 	{
@@ -96,6 +107,7 @@ void	ft_init_game(t_mlx_data *mlx)
 	
 	i = 0;
 	x = 0;
+	y = 0;
 	while (mlx->map[i])
 	{
 		j = 0;
@@ -118,15 +130,16 @@ void	ft_init_game(t_mlx_data *mlx)
 			}
 			if (mlx->map[i][j] == 'G')
 			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up, j * SIZE, i * SIZE);
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up[y], j * SIZE, i * SIZE);
 				mlx->ghosts[x].n_pos_x = j;
 				mlx->ghosts[x].n_pos_y = i;                                                                                                                                                                                                                                                  
 				mlx->ghosts[x].old_pos_x = j;                                                                                                                                                                                                                                                  
-				mlx->ghosts[x].old_pos_y = i; 
-				mlx->ghosts[x].direction = 0;
-				mlx->ghosts[x].c_sprite = mlx->sprites.ghost_up;
-				mlx->ghosts[x].c_frame = 0;
-				x++;                                                                                                                                                                                                                                               
+				mlx->ghosts[x].old_pos_y = i;
+				mlx->ghosts[x].c_index = y;
+				x++; 
+				y++;
+				if (y > 4)
+					y = 0;                                                                                                                                                                                                                                             
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:31:44 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/24 16:06:21 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/25 10:07:26 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_check_distance_with_ghosts(t_mlx_data *mlx, int P_new_pos_x, int P_new_pos_y)
 {
-	printf("P_new_pos_y=%d, P_new_pos_x=%d    g_pos_y=%d, g_pos_x=%d\n", P_new_pos_y, P_new_pos_x, mlx->ghosts[0].old_pos_y, mlx->ghosts[0].old_pos_x);
 	int	i;
 	i = 0;
 	
