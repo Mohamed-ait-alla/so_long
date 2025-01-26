@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/25 11:12:45 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:30:58 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,26 @@ static void	ft_load_sprites(t_mlx_data *mlx)
 	mlx->sprites.ghost_up[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_up.xpm", &size, &size);
 	mlx->sprites.ghost_up[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_up.xpm", &size, &size);
 	mlx->sprites.ghost_up[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_up.xpm", &size, &size);
+	mlx->sprites.ghost_up[4] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/orange_ghosts/ghost_up.xpm", &size, &size);
+	mlx->sprites.ghost_up[5] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/pink_ghosts/ghost_up.xpm", &size, &size);
 	mlx->sprites.ghost_down[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_down.xpm", &size, &size);
 	mlx->sprites.ghost_down[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_down.xpm", &size, &size);
 	mlx->sprites.ghost_down[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_down.xpm", &size, &size);
 	mlx->sprites.ghost_down[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_down.xpm", &size, &size);
+	mlx->sprites.ghost_down[4] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/orange_ghosts/ghost_down.xpm", &size, &size);
+	mlx->sprites.ghost_down[5] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/pink_ghosts/ghost_down.xpm", &size, &size);
 	mlx->sprites.ghost_right[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_right.xpm", &size, &size);
 	mlx->sprites.ghost_right[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_right.xpm", &size, &size);
 	mlx->sprites.ghost_right[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_right.xpm", &size, &size);
 	mlx->sprites.ghost_right[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_right.xpm", &size, &size);
+	mlx->sprites.ghost_right[4] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/orange_ghosts/ghost_right.xpm", &size, &size);
+	mlx->sprites.ghost_right[5] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/pink_ghosts/ghost_right.xpm", &size, &size);
 	mlx->sprites.ghost_left[0] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/blue_ghosts/ghost_left.xpm", &size, &size);
 	mlx->sprites.ghost_left[1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/green_ghosts/ghost_left.xpm", &size, &size);
 	mlx->sprites.ghost_left[2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/red_ghosts/ghost_left.xpm", &size, &size);
 	mlx->sprites.ghost_left[3] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/yellow_ghosts/ghost_left.xpm", &size, &size);
+	mlx->sprites.ghost_left[4] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/orange_ghosts/ghost_left.xpm", &size, &size);
+	mlx->sprites.ghost_left[5] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/ghosts/pink_ghosts/ghost_left.xpm", &size, &size);
 }
 
 static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
@@ -138,7 +146,7 @@ void	ft_init_game(t_mlx_data *mlx)
 				mlx->ghosts[x].c_index = y;
 				x++; 
 				y++;
-				if (y > 4)
+				if (y > 6)
 					y = 0;                                                                                                                                                                                                                                             
 			}
 			j++;

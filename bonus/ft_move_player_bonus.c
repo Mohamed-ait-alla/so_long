@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/25 11:08:39 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:25:21 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,45 +33,46 @@ void	ft_player_dying_animation(t_mlx_data *mlx)
 	}
 }
 
-void	ft_chase_player(t_mlx_data *mlx)
+void ft_chase_player(t_mlx_data *mlx)
 {
-	int	diff_x;
-	int	diff_y;
-	int	i;
+    int diff_x;
+    int diff_y;
+    int i;
 
-	i = 0;
-	while (i < mlx->n_of_ghosts)
-	{
-		if (mlx->wanted_ghost == i)
-		{
-			printf("wanted-ghost=%d\n", mlx->wanted_ghost);
-			diff_x = mlx->player_pos_x - mlx->ghosts[i].old_pos_x;
-			diff_y = mlx->player_pos_y - mlx->ghosts[i].old_pos_y;
-			if (abs(diff_x) > abs(diff_y))
-			{
-				if (diff_x > 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x + 1] != '1')
-					mlx->ghosts[i].n_pos_x++;
-				else if (diff_x < 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x - 1] != '1')
-					mlx->ghosts[i].n_pos_x--;			
-			}
-			else 
-			{
-				if (diff_y > 0 && mlx->map[mlx->ghosts[i].old_pos_y + 1][mlx->ghosts[i].old_pos_x] != '1')
-					mlx->ghosts[i].n_pos_y++;
-				else if (diff_y < 0 && mlx->map[mlx->ghosts[i].old_pos_y - 1][mlx->ghosts[i].old_pos_x] != '1')
-					mlx->ghosts[i].n_pos_y--;		
-			}
-			if (mlx->ghosts[i].c_index > 3)
-				mlx->ghosts[i].c_index--;
-			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left[mlx->ghosts[i].c_index], mlx->ghosts[i].n_pos_x * SIZE, mlx->ghosts[i].n_pos_y * SIZE);
-			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
-			mlx->ghosts[i].old_pos_x = mlx->ghosts[i].n_pos_x;
-			mlx->ghosts[i].old_pos_y = mlx->ghosts[i].n_pos_y;
-		}
-		i++;
-	}
+    i = 0;
+    while (i < mlx->n_of_ghosts)
+    {
+        if (mlx->wanted_ghost == i)
+        {
+            diff_x = mlx->player_pos_x - mlx->ghosts[i].old_pos_x;
+            diff_y = mlx->player_pos_y - mlx->ghosts[i].old_pos_y;
+            if (abs(diff_x) > abs(diff_y))
+            {
+                if (diff_x > 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x + 1] != '1')
+                    mlx->ghosts[i].n_pos_x++;
+                else if (diff_x < 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x - 1] != '1')
+                    mlx->ghosts[i].n_pos_x--;
+            }
+            else
+            {
+                if (diff_y > 0 && mlx->map[mlx->ghosts[i].old_pos_y + 1][mlx->ghosts[i].old_pos_x] != '1')
+                    mlx->ghosts[i].n_pos_y++;
+                else if (diff_y < 0 && mlx->map[mlx->ghosts[i].old_pos_y - 1][mlx->ghosts[i].old_pos_x] != '1')
+                    mlx->ghosts[i].n_pos_y--;
+            }
+            if (mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x] == 'C')
+                mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.food, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
+            else
+                mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
+            mlx->ghosts[i].old_pos_x = mlx->ghosts[i].n_pos_x;
+            mlx->ghosts[i].old_pos_y = mlx->ghosts[i].n_pos_y;
+            if (mlx->ghosts[i].c_index > 6)
+                mlx->ghosts[i].c_index--;
+            mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left[mlx->ghosts[i].c_index], mlx->ghosts[i].n_pos_x * SIZE, mlx->ghosts[i].n_pos_y * SIZE);
+        }
+        i++;
+    }
 }
-
 void	ft_ghost_anim(t_mlx_data *mlx)
 {
 	static int i = 0;
@@ -96,7 +97,7 @@ void	ft_ghost_anim(t_mlx_data *mlx)
 			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left[x], mlx->ghosts[j].old_pos_x * SIZE, mlx->ghosts[j].old_pos_y  * SIZE);
 		j++;
 		x++;
-		if (x > 3)
+		if (x > 5)
 			x = 0;
 	}
 	if (i == 89999)
