@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/21 15:36:29 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:32:31 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static void	ft_load_sprites(t_mlx_data *mlx)
 	int	size;
 
 	size = SIZE;
-	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/wall.xpm", &size, &size);
-	mlx->sprites.exit = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/exit.xpm", &size, &size);
-	mlx->sprites.food = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/pacdot_food.xpm", &size, &size);
-	mlx->sprites.black_wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/black.xpm", &size, &size);
+	mlx->sprites.wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/wall.xpm", &size, &size);
+	mlx->sprites.exit = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/exit.xpm", &size, &size);
+	mlx->sprites.food = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/pacdot_food.xpm", &size, &size);
+	mlx->sprites.black_wall = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/others/black.xpm", &size, &size);
 }
 
 void	ft_init_game(t_mlx_data *mlx)

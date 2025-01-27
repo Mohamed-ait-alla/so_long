@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/21 15:59:22 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:53:21 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_win();
 int		close_window_with_x(t_mlx_data *data);
 void	ft_calc_width_and_height(char	*file, t_frame *frame);
 void	ft_init_game(t_mlx_data *mlx);
-void	ft_check_error_map(char **map);
+void	ft_check_error_map(char **map, t_frame frame);
 char	**ft_read_map(char *file, t_frame *frame);
 int	ft_move_player(int keycode, t_mlx_data *mlx);
 #endif
