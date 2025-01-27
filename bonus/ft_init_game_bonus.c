@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/26 10:30:58 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:51:20 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	ft_init_game(t_mlx_data *mlx)
 	int			i;
 	int			j;
 	int			x;
-	int			y;
 
 	ft_load_sprites(mlx);
 	ft_calc_number_of_ghosts(mlx);
@@ -115,7 +114,6 @@ void	ft_init_game(t_mlx_data *mlx)
 	
 	i = 0;
 	x = 0;
-	y = 0;
 	while (mlx->map[i])
 	{
 		j = 0;
@@ -138,16 +136,12 @@ void	ft_init_game(t_mlx_data *mlx)
 			}
 			if (mlx->map[i][j] == 'G')
 			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up[y], j * SIZE, i * SIZE);
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up[x % 6], j * SIZE, i * SIZE);
 				mlx->ghosts[x].n_pos_x = j;
 				mlx->ghosts[x].n_pos_y = i;                                                                                                                                                                                                                                                  
 				mlx->ghosts[x].old_pos_x = j;                                                                                                                                                                                                                                                  
 				mlx->ghosts[x].old_pos_y = i;
-				mlx->ghosts[x].c_index = y;
-				x++; 
-				y++;
-				if (y > 6)
-					y = 0;                                                                                                                                                                                                                                             
+				x++;                                                                                                                                                                                                                                             
 			}
 			j++;
 		}

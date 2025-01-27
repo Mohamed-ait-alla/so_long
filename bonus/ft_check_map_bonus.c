@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/22 10:44:09 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:17:54 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ int	ft_open_fd(char *file)
 	return (fd);
 }
 
-void	ft_check_error_map(char **map)
+void	ft_check_error_map(char **map, t_frame frame)
 {
-	if (!is_epc_in_map(map) || !is_map_rectangular(map) || !is_map_closed_by_walls(map) || !is_map_has_other_chars(map))
+	if ((frame.n_col - 1) * SIZE > 1920 || frame.n_row * SIZE > 1080)
+	{
+		ft_printf("map exceed the resolution of the screen\n");
 		ft_error();
+	}
+	if (!is_epcg_in_map(map) || !is_map_rectangular(map) || !is_map_closed_by_walls(map) || !is_map_has_other_chars(map))
+		ft_error();
+	
 }
 
 char	**ft_read_map(char *file, t_frame *frame)
@@ -64,11 +70,22 @@ void	ft_calc_width_and_height(char *file, t_frame *frame)
 {
 	int		fd;
 	int		count;
+	char	*line;
 
 	count = 0;
 	fd = ft_open_fd(file);
-	frame->n_col = ft_strlen(get_next_line(fd));
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	if (!line)
+	{
+		ft_printf("map is empty\n");
+		ft_error();
+	}
+	frame->n_col = ft_strlen(line);
+	line = get_next_line(fd);
+	while (line)
+	{
+		line = get_next_line(fd);
 		count++;
+	}
 	frame->n_row = count + 1;
 }

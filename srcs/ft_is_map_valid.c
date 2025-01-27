@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/21 16:00:40 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/26 12:02:06 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	is_epc_in_map(char **map)
 		}
 		i++;
 	}
-	if (check_exit != 1 || check_player != 1 || check_collectible == 0)
+	if (check_exit != 1 || check_player != 1 || !check_collectible)
 		return (0);
 	return (1);
 }
