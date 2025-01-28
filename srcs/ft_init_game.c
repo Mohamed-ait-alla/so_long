@@ -6,20 +6,21 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 14:32:31 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:39:07 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_win()
+void	ft_win(t_mlx_data *mlx)
 {
 	ft_printf("You Win!...\n");
+	ft_free_sprites(mlx);
 	exit(1);
 }
 
 
-static void	ft_load_sprites(t_mlx_data *mlx)
+void	ft_load_sprites(t_mlx_data *mlx)
 {
 	int	size;
 
@@ -35,7 +36,12 @@ void	ft_init_game(t_mlx_data *mlx)
 	int			i;
 	int			j;
 
-	ft_load_sprites(mlx);
+	// ft_load_sprites(mlx);
+	if (!ft_check_sprites(mlx))
+	{
+		ft_printf("failed to load sprites\n");
+		exit(1);
+	}
 	i = 0;
 	while (mlx->map[i])
 	{

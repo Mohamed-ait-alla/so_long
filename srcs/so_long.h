@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 14:53:21 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:39:16 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_sprites
 	void	*player_semi_down;
 	void	*player_semi_right;
 	void	*player_semi_left;
-	void	*ghost_up;
 	void	*food;
 	void	*exit;
 }	t_sprites;
@@ -60,8 +59,6 @@ typedef struct s_mlx_data
 	char		*player_actions[4][3];
 	int			player_pos_x;
 	int			player_pos_y;
-	int			ghost_pos_x;
-	int			ghost_pos_y;
 	int			n_of_collectibles;
 	int			n_of_moves;
 	int			n_check;
@@ -69,13 +66,16 @@ typedef struct s_mlx_data
 	t_sprites	sprites;
 }	t_mlx_data;
 
+void	ft_free_sprites(t_mlx_data *mlx);
+int	ft_check_sprites(t_mlx_data *mlx);
 int	is_map_has_other_chars(char **map);
 int	is_map_closed_by_walls(char **map);
 int	is_map_rectangular(char **map);
 int	is_epc_in_map(char **map);
 void	ft_free_map(char **map, int i);
 int	ft_animation(t_mlx_data *mlx);
-void	ft_win();
+void	ft_win(t_mlx_data *mlx);
+void	ft_load_sprites(t_mlx_data *mlx);
 int		close_window_with_x(t_mlx_data *data);
 void	ft_calc_width_and_height(char	*file, t_frame *frame);
 void	ft_init_game(t_mlx_data *mlx);

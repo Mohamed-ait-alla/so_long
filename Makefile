@@ -7,7 +7,8 @@ SRCS = srcs/so_long.c \
 		srcs/ft_init_game.c \
 		srcs/ft_move_player.c \
 		srcs/ft_clear.c \
-		srcs/ft_is_map_valid.c 
+		srcs/ft_is_map_valid.c \
+		srcs/ft_check_sprites.c
 
 BSCRS = bonus/so_long_bonus.c \
 		bonus/ft_check_map_bonus.c \

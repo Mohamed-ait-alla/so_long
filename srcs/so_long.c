@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 14:53:44 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:30:53 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	ft_init_mlx_list(t_mlx_data *mlx)
 	mlx->player_actions[3][0] = mlx->player_actions[0][0];
 	mlx->player_actions[3][1] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/player/pac_semi_down.xpm", &size, &size);
 	mlx->player_actions[3][2] = mlx_xpm_file_to_image(mlx->mlx_ptr, "./textures/player/pac_open_down.xpm", &size, &size);
-	
-
 
 }
 
@@ -59,6 +57,7 @@ int	main(int ac, char **av)
 	ft_check_error_map(mlx.map, frame);
 	mlx.mlx_ptr = mlx_init();
 	mlx.mlx_window = mlx_new_window(mlx.mlx_ptr, (frame.n_col - 1) * SIZE, frame.n_row * SIZE, "so_long");
+	ft_load_sprites(&mlx);
 	ft_init_mlx_list(&mlx);
 	ft_init_game(&mlx);
 	mlx_loop_hook(mlx.mlx_ptr, ft_animation,&mlx);

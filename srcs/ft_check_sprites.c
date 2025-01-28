@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clear.c                                         :+:      :+:    :+:   */
+/*   ft_check_sprites.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 18:34:43 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 21:35:29 by mait-all         ###   ########.fr       */
+/*   Created: 2025/01/27 21:07:30 by mait-all          #+#    #+#             */
+/*   Updated: 2025/01/27 21:15:01 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free_map(char **map, int i)
-{
-	while (i--)
-		free(map[i]);
-	free(map);
-}
-
-void	ft_free_sprites(t_mlx_data *mlx)
+int	ft_check_sprites(t_mlx_data *mlx)
 {
 	int	i;
 	int	j;
 	
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.black_wall);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.wall);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.exit);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.food);
+	if (!mlx->sprites.black_wall || !mlx->sprites.exit || !mlx->sprites.food || !mlx->sprites.wall)
+		return (0);
 	i = 0;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 3)
 		{
-			mlx_destroy_image(mlx->mlx_ptr, mlx->player_actions[i][j]);
+			if (!mlx->player_actions[i][j])
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }
