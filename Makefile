@@ -32,7 +32,7 @@ NAME = libft.a
 # B_NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -f
 MLX = -lmlx -lXext -lX11
 
