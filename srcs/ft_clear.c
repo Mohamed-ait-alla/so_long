@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:34:43 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 21:35:29 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:07:29 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,22 @@ void	ft_free_sprites(t_mlx_data *mlx)
 	int	i;
 	int	j;
 	
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.black_wall);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.wall);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.exit);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.food);
+	if (mlx->sprites.black_wall)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.black_wall);
+	if (mlx->sprites.wall)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.wall);
+	if (mlx->sprites.exit)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.exit);
+	if (mlx->sprites.food)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.food);
 	i = 0;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 3)
 		{
-			mlx_destroy_image(mlx->mlx_ptr, mlx->player_actions[i][j]);
+			if (mlx->player_actions[i][j])
+				mlx_destroy_image(mlx->mlx_ptr, mlx->player_actions[i][j]);
 			j++;
 		}
 		i++;

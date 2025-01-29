@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 21:39:16 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:09:02 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_mlx_data
 	void		*mlx_ptr;
 	void		*mlx_window;
 	char		**map;
+	char		**copy_map;
 	char		*player_actions[4][3];
 	int			player_pos_x;
 	int			player_pos_y;
@@ -66,6 +67,7 @@ typedef struct s_mlx_data
 	t_sprites	sprites;
 }	t_mlx_data;
 
+void	ft_check_path(t_mlx_data *mlx, t_frame frame);
 void	ft_free_sprites(t_mlx_data *mlx);
 int	ft_check_sprites(t_mlx_data *mlx);
 int	is_map_has_other_chars(char **map);
