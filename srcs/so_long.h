@@ -6,27 +6,21 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/29 21:26:41 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:49:11 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#define SIZE 32
-#include <stdio.h> // we don't this header when we gonna push this shit 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <mlx.h>
-#include "../get_next_line/get_next_line.h"
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <X11/keysym.h>
-
-typedef struct  s_img_data
-{
-	void	*img;
-}	t_img_data;
+# define SIZE 32
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <mlx.h>
+# include "../get_next_line/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
+# include "../libft/libft.h"
+# include <X11/keysym.h>
 
 typedef struct s_frame
 {
@@ -71,19 +65,20 @@ typedef struct s_mlx_data
 void	check_file_extention(char *file);
 void	ft_check_path(t_mlx_data *mlx, t_frame frame);
 void	ft_free_sprites(t_mlx_data *mlx);
-int	ft_check_sprites(t_mlx_data *mlx);
-int	is_map_has_other_chars(char **map);
-int	is_map_closed_by_walls(char **map);
-int	is_map_rectangular(char **map);
-int	is_epc_in_map(char **map);
 void	ft_free_map(char **map, int i);
-int	ft_animation(t_mlx_data *mlx);
 void	ft_win(t_mlx_data *mlx);
 void	ft_load_sprites(t_mlx_data *mlx);
-int		close_window_with_x(t_mlx_data *data);
 void	ft_calc_width_and_height(char	*file, t_frame *frame);
 void	ft_init_game(t_mlx_data *mlx);
 void	ft_check_error_map(char **map, t_frame frame);
 char	**ft_read_map(char *file, t_frame *frame);
-int	ft_move_player(int keycode, t_mlx_data *mlx);
+int		ft_check_sprites(t_mlx_data *mlx);
+int		is_map_has_other_chars(char **map);
+int		is_map_closed_by_walls(char **map);
+int		is_map_rectangular(char **map);
+int		is_epc_in_map(char **map);
+int		ft_animation(t_mlx_data *mlx);
+int		close_window_with_x(t_mlx_data *data);
+int		ft_move_player(int keycode, t_mlx_data *mlx);
+
 #endif

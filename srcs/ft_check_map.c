@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/29 21:34:33 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:53:07 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	check_file_extention(char *file)
 	
 	file_set = ft_memchr(file, '.', ft_strlen(file));
 	file_set_h = ft_memchr(file, '/', ft_strlen(file)) + 1;
+	if (!file_set || !file_set_h)
+		return ;
 	if ((file_set_h[0] == '.' && file_set_h[1] == 'b' && file_set_h[2] == 'e' && file_set_h[3] == 'r') ||
 	    (file_set[1] != 'b' || file_set[2] != 'e' || file_set[3] != 'r'))
 	{
-		printf("Invalid extention\n");
+		ft_printf("Invalid extention\n");
 		exit(1);
 	}
 }
