@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:08:45 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/29 21:48:37 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:18:23 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_get_pos_of_p(t_mlx_data *mlx)
 
 void	flood_fill(t_mlx_data *mlx, int x, int y)
 {
-	// printf("y = %d, x = %d\n", y, x);
 	if (mlx->map[y][x] == '1' || mlx->copy_map[y][x] == 'V')
 		return ;
 	if (mlx->map[y][x] == 'P' || mlx->map[y][x] == 'C' || mlx->map[y][x] == '0' || mlx->map[y][x] == 'E')
@@ -101,5 +100,4 @@ void	ft_check_path(t_mlx_data *mlx, t_frame frame)
 		i++;
 	}
 	ft_free_map(mlx->copy_map, i);
-	ft_free_map(mlx->map, mlx->map_len);
 }
