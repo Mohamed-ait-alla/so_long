@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 12:19:58 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:59:04 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_win(t_mlx_data *mlx)
 {
 	ft_printf("You Win!...\n");
-	ft_free_sprites(mlx);
+	ft_cleanup(mlx);
 	exit(1);
 }
 

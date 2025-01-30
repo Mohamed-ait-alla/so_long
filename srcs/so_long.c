@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 12:27:26 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:47:10 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ static	void	ft_init_mlx_list(t_mlx_data *mlx)
 	mlx->n_of_moves = 0;
 	mlx->n_check = 0;
 	mlx->direction = 0;
-	mlx->map_len = 0;
+	mlx->r_map_len = 0;
+	mlx->c_map_len = 0;
 }
 
 int	close_window_with_x(t_mlx_data *mlx)
 {
-	ft_free_window(mlx);
-	return (0);
+	ft_cleanup(mlx);
+	exit(1);
 }
 
 int	main(int ac, char **av)
@@ -35,9 +36,11 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	ft_bzero(&mlx, sizeof(t_mlx_data));
+	ft_init_mlx_list(&mlx);
 	check_file_extention(av[1]);
 	ft_calc_width_and_height(av[1], &frame);
-	mlx.map_len = frame.n_row;
+	mlx.r_map_len = frame.n_row;
+	mlx.c_map_len = frame.n_col;
 	mlx.map = ft_read_map(av[1], &frame);
 	ft_check_error_map(mlx.map, frame);
 	ft_check_path(&mlx, frame);
@@ -45,7 +48,6 @@ int	main(int ac, char **av)
 	mlx.mlx_window = mlx_new_window(mlx.mlx_ptr,
 			(frame.n_col - 1) * SIZE, frame.n_row * SIZE, "so_long");
 	ft_load_sprites(&mlx);
-	ft_init_mlx_list(&mlx);
 	ft_init_game(&mlx);
 	mlx_loop_hook(mlx.mlx_ptr, ft_animation, &mlx);
 	mlx_hook(mlx.mlx_window, 17, 0, close_window_with_x, &mlx);

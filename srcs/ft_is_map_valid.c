@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 12:01:11 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:07:21 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,19 @@ int	is_map_closed_by_walls(char **map, t_frame frame)
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][j] && map[i][j] != '\n')
+		while (map[i][j])
 		{
 			if ((i == 0 && map[i][j] != '1')
 				|| (i == (frame.n_row - 1) && map[i][j] != '1'))
 				return (0);
 			else if ((j == 0 && map[i][j] != '1')
-				|| (j == (frame.n_col - 1) && map[i][j] != '1'))
+				|| (j == (frame.n_col - 2) && map[i][j] != '1'))
 				return (0);
 			j++;
 		}
 		i++;
 	}
+	ft_printf("walls\n");
 	return (1);
 }
 

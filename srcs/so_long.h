@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 12:26:52 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:46:36 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,14 @@ typedef struct s_mlx_data
 	int			n_of_moves;
 	int			n_check;
 	int			direction;
-	int			map_len;
+	int			r_map_len;
+	int			c_map_len;
 	t_sprites	sprites;
 }	t_mlx_data;
 
 void	check_file_extention(char *file);
 void	ft_check_path(t_mlx_data *mlx, t_frame frame);
-void	ft_free_sprites(t_mlx_data *mlx);
+void	ft_cleanup(t_mlx_data *mlx);
 void	ft_free_map(char **map, int i);
 void	ft_free_window(t_mlx_data *mlx);
 void	ft_win(t_mlx_data *mlx);
