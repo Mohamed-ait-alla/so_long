@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/28 11:09:53 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:01:11 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_epc_in_map(char **map)
 
 int	is_map_rectangular(char **map)
 {
-	int first_row_len;
+	int	first_row_len;
 	int	i;
 
 	first_row_len = ft_strlen(map[0]) - 1;
@@ -72,27 +72,22 @@ int	is_map_rectangular(char **map)
 	return (1);
 }
 
-int	is_map_closed_by_walls(char **map)
+int	is_map_closed_by_walls(char **map, t_frame frame)
 {
 	int	i;
 	int	j;
-	int	len_col;
-	int	len_row;
-	
-	len_col = ft_strlen(map[0]) - 1;
-	len_row = 0;
-	i = 0;
-	while (map[i++])
-		len_row++;
+
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j] && map[i][j] != '\n')
 		{
-			if ((i == 0 && map[i][j] != '1') || (i == (len_row - 1) && map[i][j] != '1'))
+			if ((i == 0 && map[i][j] != '1')
+				|| (i == (frame.n_row - 1) && map[i][j] != '1'))
 				return (0);
-			else if ((j == 0 && map[i][j] != '1') || (j == (len_col - 1) && map[i][j] != '1'))
+			else if ((j == 0 && map[i][j] != '1')
+				|| (j == (frame.n_col - 1) && map[i][j] != '1'))
 				return (0);
 			j++;
 		}
@@ -105,14 +100,15 @@ int	is_map_has_other_chars(char **map)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j] && map[i][j] != '\n')
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C'
+				&& map[i][j] != 'E' && map[i][j] != 'P')
 				return (0);
 			j++;
 		}

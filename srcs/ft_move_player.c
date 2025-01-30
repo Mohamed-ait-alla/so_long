@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 11:51:39 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:03:16 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_animation(t_mlx_data *mlx)
 	frame_counter++;
 	if (frame_counter >= 15000)
 	{
-		ft_printf("index=%d\n", frame_index);
 		frame_index = (frame_index + 1) % 3;
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
 			mlx->player_actions[mlx->direction][frame_index],

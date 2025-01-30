@@ -6,39 +6,23 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 10:53:07 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:36:28 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_error(char **map, int i) 
+void	ft_error(char **map, int i)
 {
-	ft_printf("map is not valid!\n");
+	ft_printf("Error\n:map is not valid!\n");
 	ft_free_map(map, i);
 	exit(1);
-}
-
-void	check_file_extention(char *file)
-{
-	char	*file_set;
-	char	*file_set_h;
-	
-	file_set = ft_memchr(file, '.', ft_strlen(file));
-	file_set_h = ft_memchr(file, '/', ft_strlen(file)) + 1;
-	if (!file_set || !file_set_h)
-		return ;
-	if ((file_set_h[0] == '.' && file_set_h[1] == 'b' && file_set_h[2] == 'e' && file_set_h[3] == 'r') ||
-	    (file_set[1] != 'b' || file_set[2] != 'e' || file_set[3] != 'r'))
-	{
-		ft_printf("Invalid extention\n");
-		exit(1);
-	}
 }
 
 int	ft_open_fd(char *file)
 {
 	int	fd;
+
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
 	{
@@ -55,7 +39,8 @@ void	ft_check_error_map(char **map, t_frame frame)
 		ft_printf("map exceed the resolution of the screen\n");
 		ft_error(map, frame.n_row);
 	}
-	if (!is_epc_in_map(map) || !is_map_rectangular(map) || !is_map_closed_by_walls(map) || !is_map_has_other_chars(map))
+	if (!is_epc_in_map(map) || !is_map_rectangular(map)
+		|| !is_map_closed_by_walls(map, frame) || !is_map_has_other_chars(map))
 		ft_error(map, frame.n_row);
 }
 
@@ -76,7 +61,7 @@ char	**ft_read_map(char *file, t_frame *frame)
 		map[i] = get_next_line(fd);
 		if (!map[i])
 			ft_free_map(map, i);
-		i++;	
+		i++;
 	}
 	map[i] = NULL;
 	get_next_line(-2);

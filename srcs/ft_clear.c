@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:34:43 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/29 21:23:42 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:28:24 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@ void	ft_free_map(char **map, int i)
 	free(map);
 }
 
+void	ft_free_window(t_mlx_data *mlx)
+{
+	mlx_destroy_window(mlx->mlx_ptr, mlx->mlx_window);
+	mlx_destroy_display(mlx->mlx_ptr);
+	free(mlx->mlx_ptr);
+}
+
 void	ft_free_sprites(t_mlx_data *mlx)
 {
 	int	i;
 	int	j;
-	
+
 	if (mlx->sprites.black_wall)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.black_wall);
 	if (mlx->sprites.wall)
@@ -44,11 +51,6 @@ void	ft_free_sprites(t_mlx_data *mlx)
 		}
 		i++;
 	}
-	i = 0;
-	while (mlx->map[i])
-		free(mlx->map[i++]);
-	free(mlx->map);
-	mlx_destroy_window(mlx->mlx_ptr, mlx->mlx_window);
-	mlx_destroy_display(mlx->mlx_ptr);
-	free(mlx->mlx_ptr);
+	ft_free_map(mlx->map, mlx->map_len);
+	ft_free_window(mlx);
 }

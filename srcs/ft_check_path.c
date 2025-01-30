@@ -6,13 +6,13 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:08:45 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 10:18:23 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:44:44 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_get_pos_of_p(t_mlx_data *mlx)
+static void	ft_get_pos_of_p(t_mlx_data *mlx)
 {
 	int	i;
 	int	j;
@@ -34,11 +34,12 @@ void	ft_get_pos_of_p(t_mlx_data *mlx)
 	}
 }
 
-void	flood_fill(t_mlx_data *mlx, int x, int y)
+static void	flood_fill(t_mlx_data *mlx, int x, int y)
 {
 	if (mlx->map[y][x] == '1' || mlx->copy_map[y][x] == 'V')
 		return ;
-	if (mlx->map[y][x] == 'P' || mlx->map[y][x] == 'C' || mlx->map[y][x] == '0' || mlx->map[y][x] == 'E')
+	if (mlx->map[y][x] == 'P' || mlx->map[y][x] == 'C'
+		|| mlx->map[y][x] == '0' || mlx->map[y][x] == 'E')
 	{
 		if (mlx->map[y][x] == 'E')
 		{
@@ -53,10 +54,9 @@ void	flood_fill(t_mlx_data *mlx, int x, int y)
 	flood_fill(mlx, x, y - 1);
 }
 
-void	ft_check_path(t_mlx_data *mlx, t_frame frame)
+static	void	ft_generate_a_copied_map(t_mlx_data *mlx, t_frame frame)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	mlx->copy_map = malloc((frame.n_row + 1) * sizeof(char *));
@@ -74,6 +74,32 @@ void	ft_check_path(t_mlx_data *mlx, t_frame frame)
 		i++;
 	}
 	ft_get_pos_of_p(mlx);
+}
+
+static void	ft_is_reachable(t_mlx_data *mlx, int i, int j)
+{
+	if (mlx->map[i][j] == 'C' && mlx->copy_map[i][j] != 'V')
+	{
+		ft_printf("Error\n: can't reach a collectible\n");
+		ft_free_map(mlx->copy_map, mlx->map_len);
+		ft_free_map(mlx->map, mlx->map_len);
+		exit(1);
+	}
+	if (mlx->map[i][j] == 'E' && mlx->copy_map[i][j] != 'V')
+	{
+		ft_printf("Error\n: can't reach exit\n");
+		ft_free_map(mlx->copy_map, mlx->map_len);
+		ft_free_map(mlx->map, mlx->map_len);
+		exit(1);
+	}
+}
+
+void	ft_check_path(t_mlx_data *mlx, t_frame frame)
+{
+	int	i;
+	int	j;
+
+	ft_generate_a_copied_map(mlx, frame);
 	flood_fill(mlx, mlx->player_pos_x, mlx->player_pos_y);
 	i = 0;
 	while (mlx->map[i])
@@ -81,21 +107,8 @@ void	ft_check_path(t_mlx_data *mlx, t_frame frame)
 		j = 0;
 		while (mlx->map[i][j] && mlx->map[i][j] != '\n')
 		{
-			if (mlx->map[i][j] == 'C' && mlx->copy_map[i][j] != 'V')
-			{
-				ft_printf("Error\n: can't reach a collectible\n");
-				ft_free_map(mlx->copy_map, frame.n_row);
-				ft_free_map(mlx->map, mlx->map_len);
-				exit(1);
-			}
-			if (mlx->map[i][j] == 'E' && mlx->copy_map[i][j] != 'V')
-			{
-				ft_printf("Error\n: can't reach exit\n");
-				ft_free_map(mlx->copy_map, frame.n_row);
-				ft_free_map(mlx->map, mlx->map_len);
-				exit(1);
-			}
-			j++;		
+			ft_is_reachable(mlx, i, j);
+			j++;
 		}
 		i++;
 	}
