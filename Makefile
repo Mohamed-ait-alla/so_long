@@ -15,6 +15,7 @@ BSCRS = bonus/so_long_bonus.c \
 		bonus/ft_check_map_bonus.c \
 		bonus/ft_clear_bonus.c \
 		bonus/ft_init_game_bonus.c \
+		bonus/ft_load_sprites.c \
 		bonus/ft_ghost_bonus.c \
 		bonus/ft_is_map_valid_bonus.c \
 		bonus/ft_move_player_bonus.c \
@@ -29,7 +30,7 @@ BOBJS = ${BSCRS:.c=.o}
 
 
 NAME = libft.a
-# B_NAME = libft.a
+B_NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
@@ -38,7 +39,7 @@ MLX = -lmlx -lXext -lX11
 
 all: ${NAME}
 
-# bonus: ${B_NAME}
+bonus: ${B_NAME}
 
 LIB:
 	make -C ./libft

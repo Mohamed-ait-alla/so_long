@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 10:12:32 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:53:07 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@
 #include "../ft_printf/ft_printf.h"
 #include "../libft/libft.h"
 #include <X11/keysym.h>
-
-typedef struct  s_img_data
-{
-	void	*img;
-}	t_img_data;
 
 typedef struct s_frame
 {
@@ -100,6 +95,7 @@ void	ft_win();
 void	ft_lose();
 int		close_window_with_x(t_mlx_data *data);
 void	ft_calc_width_and_height(char	*file, t_frame *frame);
+void	ft_load_sprites(t_mlx_data *mlx);
 void	ft_init_game(t_mlx_data *mlx);
 void	ft_check_error_map(char **map, t_frame frame);
 char	**ft_read_map(char *file, t_frame *frame);
