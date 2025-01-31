@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 15:00:59 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:58:37 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 	if (mlx->map[new_pos_y][new_pos_x] != '1')
 	{
 		if (mlx->map[new_pos_y][new_pos_x] == 'E' && mlx->n_of_collectibles == mlx->n_check)
-			ft_win();
+			ft_win(mlx);
 		else if (mlx->map[new_pos_y][new_pos_x] != 'E' || mlx->n_of_collectibles == mlx->n_check)
 		{
 			mlx->n_of_moves++;

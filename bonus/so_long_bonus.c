@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 15:36:28 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:55:13 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ void	ft_init_mlx_list(t_mlx_data *mlx)
 	mlx->r_map_len = 0;
 }
 
-int close_window_with_x(t_mlx_data *data)
+int close_window_with_x(t_mlx_data *mlx)
 {
-	mlx_destroy_window(data->mlx_ptr, data->mlx_window);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	exit(1); // exit with success
-	return (0);
+	ft_cleanup(mlx);
+	exit(1);
 }
 
 int	main(int ac, char **av)

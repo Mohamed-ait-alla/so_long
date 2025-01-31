@@ -6,15 +6,22 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 10:17:54 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:33:08 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_error() 
+void	ft_error(char **map, int i, int flag)
 {
-	ft_printf("map is not valid!\n");
+	char	*flag_msg[4];
+
+	flag_msg[0] = ": One letter in these (EPC) is messed in map!\n";
+	flag_msg[1] = ": Map is not rectangular!\n";
+	flag_msg[2] = ": Map is not closed by walls!\n";
+	flag_msg[3] = ": Map has a not valid character!\n";
+	ft_printf("Error\n%s", flag_msg[flag]);
+	ft_free_map(map, i);
 	exit(1);
 }
 
@@ -33,14 +40,27 @@ int	ft_open_fd(char *file)
 
 void	ft_check_error_map(char **map, t_frame frame)
 {
+	int	flag;
+
+	flag = -1;
 	if ((frame.n_col - 1) * SIZE > 1920 || frame.n_row * SIZE > 1080)
 	{
-		ft_printf("map exceed the resolution of the screen\n");
-		ft_error();
+		ft_printf("Error\n:Map exceeds the resolution of the screen\n");
+		ft_error(map, frame.n_row, flag);
 	}
-	if (!is_epcg_in_map(map) || !is_map_rectangular(map) || !is_map_closed_by_walls(map) || !is_map_has_other_chars(map))
-		ft_error();
-	
+	if (!is_epc_in_map(map) || !is_map_rectangular(map)
+		|| !is_map_closed_by_walls(map, frame) || !is_map_has_other_chars(map))
+	{
+		if (!is_epc_in_map(map))
+			flag = 0;
+		if (!is_map_rectangular(map))
+			flag = 1;
+		if (!is_map_closed_by_walls(map, frame))
+			flag = 2;
+		if (!is_map_has_other_chars(map))
+			flag = 3;
+		ft_error(map, frame.n_row, flag);
+	}
 }
 
 char	**ft_read_map(char *file, t_frame *frame)
@@ -63,6 +83,7 @@ char	**ft_read_map(char *file, t_frame *frame)
 		i++;	
 	}
 	map[i] = NULL;
+	get_next_line(-2);
 	return (map);
 }
 
@@ -77,15 +98,18 @@ void	ft_calc_width_and_height(char *file, t_frame *frame)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		ft_printf("map is empty\n");
-		ft_error();
+		ft_printf("Error\n: Map is empty!\n");
+		exit(1);
 	}
 	frame->n_col = ft_strlen(line);
+	free(line);
 	line = get_next_line(fd);
 	while (line)
 	{
+		free(line);
 		line = get_next_line(fd);
 		count++;
 	}
+	free(line);
 	frame->n_row = count + 1;
 }

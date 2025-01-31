@@ -6,13 +6,13 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 10:18:46 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:07:26 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_win()
+void	ft_win(t_mlx_data *mlx)
 {
 	ft_printf("\n╔══════════════════════════════════════════╗\n");
 	ft_printf("║         🎉 Congratulations! 🎉           ║\n");
@@ -24,6 +24,7 @@ void	ft_win()
 	ft_printf("╠══════════════════════════════════════╣\n");
 	ft_printf("║       Thank you for playing! 🎮      ║\n");
 	ft_printf("╚══════════════════════════════════════╝\n\n");
+	ft_cleanup(mlx);
 	exit(1);
 }
 
@@ -74,7 +75,7 @@ void	ft_init_game(t_mlx_data *mlx)
 	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
 	if (!mlx->ghosts)
 	{
-		printf("failed to allocate memory for ghosts!\n");
+		ft_printf("Error\n: Failed to allocate memory for ghosts!\n");
 		exit(1);
 	}
 	

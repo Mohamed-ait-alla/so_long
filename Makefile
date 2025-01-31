@@ -16,7 +16,7 @@ BSCRS = bonus/so_long_bonus.c \
 		bonus/ft_check_path_bonus.c \
 		bonus/ft_clear_bonus.c \
 		bonus/ft_init_game_bonus.c \
-		bonus/ft_load_sprites.c \
+		bonus/ft_load_sprites_bonus.c \
 		bonus/ft_check_sprites_bonus.c \
 		bonus/ft_ghost_bonus.c \
 		bonus/ft_is_map_valid_bonus.c \
