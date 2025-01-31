@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 09:51:00 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:00:59 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_player_dying_animation(t_mlx_data *mlx)
     	{
         	if (frame < 10)
         	{
-            	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_dying[frame], mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
+            	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_dying[frame],
+					mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
             	frame++;            
         	}
         	else
@@ -33,90 +34,22 @@ void	ft_player_dying_animation(t_mlx_data *mlx)
 	}
 }
 
-void ft_chase_player(t_mlx_data *mlx)
-{
-    int diff_x;
-    int diff_y;
-    int i;
-
-    i = 0;
-    while (i < mlx->n_of_ghosts)
-    {
-        if (mlx->wanted_ghost == i)
-        {
-            diff_x = mlx->player_pos_x - mlx->ghosts[i].old_pos_x;
-            diff_y = mlx->player_pos_y - mlx->ghosts[i].old_pos_y;
-            if (abs(diff_x) > abs(diff_y))
-            {
-                if (diff_x > 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x + 1] != '1')
-                    mlx->ghosts[i].n_pos_x++;
-                else if (diff_x < 0 && mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x - 1] != '1')
-                    mlx->ghosts[i].n_pos_x--;
-            }
-            else
-            {
-                if (diff_y > 0 && mlx->map[mlx->ghosts[i].old_pos_y + 1][mlx->ghosts[i].old_pos_x] != '1')
-                    mlx->ghosts[i].n_pos_y++;
-                else if (diff_y < 0 && mlx->map[mlx->ghosts[i].old_pos_y - 1][mlx->ghosts[i].old_pos_x] != '1')
-                    mlx->ghosts[i].n_pos_y--;
-            }
-            if (mlx->map[mlx->ghosts[i].old_pos_y][mlx->ghosts[i].old_pos_x] == 'C')
-                mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.food, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
-            else
-                mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->ghosts[i].old_pos_x * SIZE, mlx->ghosts[i].old_pos_y * SIZE);
-            mlx->ghosts[i].old_pos_x = mlx->ghosts[i].n_pos_x;
-            mlx->ghosts[i].old_pos_y = mlx->ghosts[i].n_pos_y;
-            mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left[i % 6], mlx->ghosts[i].n_pos_x * SIZE, mlx->ghosts[i].n_pos_y * SIZE);
-        }
-        i++;
-    }
-}
-void	ft_ghost_anim(t_mlx_data *mlx)
-{
-	static int i = 0;
-	int j = 0;
-	i++;
-
-	if (!mlx->is_died)
-		return ;
-	if (!ft_check_distance_with_ghosts(mlx, mlx->player_pos_x, mlx->player_pos_y))
-	{
-		if (i == 1000)
-			ft_chase_player(mlx);
-	}
-	while (j < mlx->n_of_ghosts)
-	{
-		if (i == 59999)
-			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_right[j % 6], mlx->ghosts[j].old_pos_x * SIZE, mlx->ghosts[j].old_pos_y * SIZE);
-		else if (i == 69990)
-			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_down[j % 6], mlx->ghosts[j].old_pos_x * SIZE, mlx->ghosts[j].old_pos_y  * SIZE);
-		else if (i == 89999)
-			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_left[j % 6], mlx->ghosts[j].old_pos_x * SIZE, mlx->ghosts[j].old_pos_y  * SIZE);
-		j++;
-	}
-	if (i == 89999)
-		i = 0;
-}
-
 int	ft_animation(t_mlx_data *mlx)
 {
 	static int	frame_counter = 0;
-	frame_counter++;
-	ft_ghost_anim(mlx);
+	static int	frame_index = 0;
+
+	ft_ghost_animation(mlx);
 	ft_player_dying_animation(mlx);
 	if (!mlx->is_died)
 		return (0);
-	if (frame_counter == 25999)
+	frame_counter++;
+	if (frame_counter >= 15000)
 	{
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_actions[mlx->direction][0], mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
-	}
-	else if (frame_counter == 35990)
-	{
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_actions[mlx->direction][1], mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
-	}
-	else if (frame_counter == 49999)
-	{
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_actions[mlx->direction][2], mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
+		frame_index = (frame_index + 1) % 3;
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+			mlx->player_actions[mlx->direction][frame_index],
+			mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
 		frame_counter = 0;
 	}
 	return (0);
@@ -128,7 +61,6 @@ static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 	{
 		mlx->map[new_pos_y][new_pos_x] = '0';
 		mlx->n_check++;
-
 	}
 	if (mlx->map[new_pos_y][new_pos_x] != '1')
 	{
@@ -144,6 +76,34 @@ static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 	}
 }
 
+static void	ft_set_directions(t_mlx_data *mlx, int sc, int n_pos_x, int n_pos_y)
+{
+	if (sc == XK_w || sc == XK_Up)
+	{
+		n_pos_y--;
+		mlx->direction = 1;
+		ft_move_to_direction(mlx, n_pos_x, n_pos_y);
+	}
+	else if (sc == XK_d || sc == XK_Right)
+	{
+		n_pos_x++;
+		mlx->direction = 0;
+		ft_move_to_direction(mlx, n_pos_x, n_pos_y);
+	}
+	else if (sc == XK_s || sc == XK_Down)
+	{
+		n_pos_y++;
+		mlx->direction = 3;
+		ft_move_to_direction(mlx, n_pos_x, n_pos_y);
+	}
+	else if (sc == XK_a || sc == XK_Left)
+	{
+		n_pos_x--;
+		mlx->direction = 2;
+		ft_move_to_direction(mlx, n_pos_x, n_pos_y);
+	}
+}
+
 int	ft_move_player(int keycode, t_mlx_data *mlx)
 {
 	int	new_pos_x;
@@ -155,29 +115,6 @@ int	ft_move_player(int keycode, t_mlx_data *mlx)
 		return (0);
 	if (keycode == XK_Escape)
 		close_window_with_x(mlx);
-	if (keycode == XK_w || keycode == XK_Up)
-	{
-		new_pos_y--;
-		mlx->direction = 1;
-		ft_move_to_direction(mlx, new_pos_x, new_pos_y);
-	}
-	else if (keycode == XK_d || keycode == XK_Right)
-	{
-		new_pos_x++;
-		mlx->direction = 0;
-		ft_move_to_direction(mlx, new_pos_x, new_pos_y);
-	}
-	else if (keycode == XK_s || keycode == XK_Down)
-	{
-		new_pos_y++;
-		mlx->direction = 3;
-		ft_move_to_direction(mlx, new_pos_x, new_pos_y);
-	}
-	else if (keycode == XK_a || keycode == XK_Left)
-	{
-		new_pos_x--;
-		mlx->direction = 2;
-		ft_move_to_direction(mlx, new_pos_x, new_pos_y);
-	}
+	ft_set_directions(mlx, keycode, new_pos_x, new_pos_y);
 	return (0);
 }
