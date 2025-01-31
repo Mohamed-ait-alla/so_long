@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 11:14:51 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:23:54 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_mlx_data
 	void		*mlx_ptr;
 	void		*mlx_window;
 	char		**map;
+	char		**copy_map;
 	char		*player_actions[4][3];
 	char		*player_dying[11];
 	int			player_pos_x;
@@ -79,10 +80,13 @@ typedef struct s_mlx_data
 	int			is_died;
 	int			direction;
 	int			n_of_ghosts;
+	int			r_map_len;
+	int			c_map_len;
 	t_ghost		*ghosts;
 	t_sprites	sprites;
 }	t_mlx_data;
 
+void	ft_check_path(t_mlx_data *mlx, t_frame frame);
 int	ft_check_sprites(t_mlx_data *mlx);
 void	ft_player_dying_animation(t_mlx_data *mlx);
 int	is_map_has_other_chars(char **map);

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 10:19:37 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:21:01 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_init_mlx_list(t_mlx_data *mlx)
 	mlx->n_of_ghosts = 0;
 	mlx->wanted_ghost = 0;
 	mlx->is_died = 1;
+	mlx->c_map_len = 0;
+	mlx->r_map_len = 0;
 }
 
 int close_window_with_x(t_mlx_data *data)
@@ -41,8 +43,11 @@ int	main(int ac, char **av)
 		return (0);
 	
 	ft_calc_width_and_height(av[1], &frame);
+	mlx.r_map_len = frame.n_row;
+	mlx.c_map_len = frame.n_col;
 	mlx.map = ft_read_map(av[1], &frame);
 	ft_check_error_map(mlx.map, frame);
+	ft_check_path(&mlx, frame);
 	mlx.mlx_ptr = mlx_init();
 	ft_load_sprites(&mlx);
 	mlx.mlx_window = mlx_new_window(mlx.mlx_ptr, (frame.n_col - 1) * SIZE, frame.n_row * SIZE, "so_long");

@@ -6,13 +6,13 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:31:44 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 14:59:23 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:23:09 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static int	ft_check_distance_with_ghosts(t_mlx_data *mlx, int P_new_pos_x, int P_new_pos_y)
+int	ft_check_distance_with_ghosts(t_mlx_data *mlx, int P_new_pos_x, int P_new_pos_y)
 {
 	int	i;
 	i = 0;

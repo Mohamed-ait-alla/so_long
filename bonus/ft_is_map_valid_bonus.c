@@ -6,19 +6,18 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/27 10:07:07 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:26:34 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	ft_init(int *i, int *check_e, int *check_p, int *check_c, int *check_g)
+static void	ft_init(int *i, int *check_e, int *check_p, int *check_c)
 {
 	*i = 0;
 	*check_e = 0;
 	*check_p= 0;
 	*check_c = 0;
-	*check_g = 0;
 }
 
 int	is_epcg_in_map(char **map)
@@ -28,9 +27,8 @@ int	is_epcg_in_map(char **map)
 	int	check_exit;
 	int	check_player;
 	int	check_collectible;
-	int	check_ghost;
 
-	ft_init(&i, &check_exit, &check_player, &check_collectible, &check_ghost);
+	ft_init(&i, &check_exit, &check_player, &check_collectible);
 	while (map[i])
 	{
 		j = 0;
@@ -42,13 +40,11 @@ int	is_epcg_in_map(char **map)
 				check_player++;
 			else if (map[i][j] == 'C')
 				check_collectible++;
-			else if (map[i][j] == 'G')
-				check_ghost++;
 			j++;
 		}
 		i++;
 	}
-	if (check_exit != 1 || check_player != 1 || !check_collectible || !check_ghost)
+	if (check_exit != 1 || check_player != 1 || !check_collectible)
 		return (0);
 	return (1);
 }
