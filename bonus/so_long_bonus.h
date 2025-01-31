@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 09:53:07 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:13:51 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_mlx_data
 	t_sprites	sprites;
 }	t_mlx_data;
 
+int	ft_check_sprites(t_mlx_data *mlx);
 void	ft_player_dying_animation(t_mlx_data *mlx);
 int	is_map_has_other_chars(char **map);
 int	is_map_closed_by_walls(char **map);

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:39:37 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 09:51:16 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:21:27 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,9 @@ void	ft_load_sprites(t_mlx_data *mlx)
 	ft_load_player_dying_sprites(mlx, size);
 	ft_load_ghost_up_and_down_sprites(mlx, size);
 	ft_load_ghost_right_and_left_sprites(mlx, size);
+	if (!ft_check_sprites(mlx))
+	{
+		ft_printf("Error\n: Failed to load sprites!\n");
+		exit(1);
+	}
 }
