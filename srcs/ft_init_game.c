@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 10:25:17 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:14:45 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 void	ft_win(t_mlx_data *mlx)
 {
-	ft_printf("You Win!...\n");
+	ft_printf("\n╔══════════════════════════════════════════╗\n");
+	ft_printf("║         🎉 Congratulations! 🎉           ║\n");
+	ft_printf("║     You're Boss, You Won the Game! 🎯    ║\n");
+	ft_printf("╚══════════════════════════════════════════╝\n\n");
+	ft_printf("\n╔══════════════════════════════════════╗\n");
+	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf("║            \033[1m🌟 mait-all 🌟\033[0m            ║\n");
+	ft_printf("╠══════════════════════════════════════╣\n");
+	ft_printf("║       Thank you for playing! 🎮      ║\n");
+	ft_printf("╚══════════════════════════════════════╝\n\n");
 	ft_cleanup(mlx);
 	exit(1);
 }
@@ -63,7 +72,7 @@ void	ft_load_sprites(t_mlx_data *mlx)
 	ft_load_player_actions_sprites(mlx, size);
 	if (!ft_check_sprites(mlx))
 	{
-		ft_printf("Error\n: Failed to load sprites!\n");
+		ft_printf(RED "Error\n: Failed to load sprites!\n");
 		exit(1);
 	}
 }

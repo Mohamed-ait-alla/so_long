@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 16:33:08 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:00:16 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_open_fd(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
 	{
-		ft_printf("failed to open file descriptor\n");
+		ft_printf("Error\n: Failed to open file descriptor\n");
 		exit(1);
 	}
 	return (fd);
@@ -45,7 +45,7 @@ void	ft_check_error_map(char **map, t_frame frame)
 	flag = -1;
 	if ((frame.n_col - 1) * SIZE > 1920 || frame.n_row * SIZE > 1080)
 	{
-		ft_printf("Error\n:Map exceeds the resolution of the screen\n");
+		ft_printf("Error\n: Map exceeds the resolution of the screen\n");
 		ft_error(map, frame.n_row, flag);
 	}
 	if (!is_epc_in_map(map) || !is_map_rectangular(map)

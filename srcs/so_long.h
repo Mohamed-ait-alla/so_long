@@ -6,13 +6,15 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 18:46:36 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:17:05 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define SIZE 32
+# define RED "\033[1;31m"
+# define YELLOW "\033[1;33m"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>

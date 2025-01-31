@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 21:17:09 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:13:41 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void	ft_error(char **map, int i, int flag)
 {
 	char	*flag_msg[4];
 
-	flag_msg[0] = ":One letter in these (EPC) is messed in map!\n";
-	flag_msg[1] = ":Map is not rectangular!\n";
-	flag_msg[2] = ":Map is not closed by walls!\n";
-	flag_msg[3] = ":Map has a not valid character!\n";
-	ft_printf("Error\n%s", flag_msg[flag]);
+	flag_msg[0] = ": One letter in these (EPC) is messed in map!\n";
+	flag_msg[1] = ": Map is not rectangular!\n";
+	flag_msg[2] = ": Map is not closed by walls!\n";
+	flag_msg[3] = ": Map has a not valid character!\n";
+	ft_printf(RED "Error\n%s", flag_msg[flag]);
 	ft_free_map(map, i);
 	exit(1);
 }
@@ -32,7 +32,7 @@ static int	ft_open_fd(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
 	{
-		ft_printf("failed to open file descriptor\n");
+		ft_printf(RED "Error\n: Failed to open file descriptor\n");
 		exit(1);
 	}
 	return (fd);
@@ -99,7 +99,7 @@ void	ft_calc_width_and_height(char *file, t_frame *frame)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		ft_printf("Error\n:map is empty\n");
+		ft_printf(RED "Error\n:map is empty\n");
 		exit(1);
 	}
 	frame->n_col = ft_strlen(line);

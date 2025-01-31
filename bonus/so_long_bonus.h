@@ -6,14 +6,13 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 16:28:52 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:00:40 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#define SIZE 32
-#include <stdio.h> // we don't this header when we gonna push this shit 
+#define SIZE 32 
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
