@@ -32,7 +32,7 @@ BOBJS = ${BSCRS:.c=.o}
 
 
 NAME = libft.a
-# B_NAME = libft.a
+B_NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
@@ -41,7 +41,7 @@ MLX = -lmlx -lXext -lX11
 
 all: ${NAME}
 
-# bonus: ${B_NAME}
+bonus: ${B_NAME}
 
 LIB:
 	make -C ./libft

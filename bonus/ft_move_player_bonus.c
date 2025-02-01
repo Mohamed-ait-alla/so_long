@@ -6,31 +6,31 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 15:58:37 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 09:40:23 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-
 void	ft_player_dying_animation(t_mlx_data *mlx)
 {
-    static int frame = 0;
-    static int delay = 0;
+	static int	frame = 0;
+	static int	delay = 0;
 
 	if (mlx->is_died == 0)
 	{
-    	if (delay++ % 15000 == 0)    
-    	{
-        	if (frame < 10)
-        	{
-            	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_dying[frame],
-					mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
-            	frame++;            
-        	}
-        	else
+		if (delay++ % 15000 == 0)
+		{
+			if (frame < 10)
+			{
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+					mlx->player_dying[frame], mlx->player_pos_x * SIZE,
+					mlx->player_pos_y * SIZE);
+				frame++;
+			}
+			else
 				ft_lose();
-    	}
+		}
 	}
 }
 
@@ -64,12 +64,16 @@ static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 	}
 	if (mlx->map[new_pos_y][new_pos_x] != '1')
 	{
-		if (mlx->map[new_pos_y][new_pos_x] == 'E' && mlx->n_of_collectibles == mlx->n_check)
+		if (mlx->map[new_pos_y][new_pos_x] == 'E'
+			&& mlx->n_of_collectibles == mlx->n_check)
 			ft_win(mlx);
-		else if (mlx->map[new_pos_y][new_pos_x] != 'E' || mlx->n_of_collectibles == mlx->n_check)
+		else if (mlx->map[new_pos_y][new_pos_x] != 'E'
+			|| mlx->n_of_collectibles == mlx->n_check)
 		{
 			mlx->n_of_moves++;
-			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.black_wall, mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
+			mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+				mlx->sprites.black_wall, mlx->player_pos_x * SIZE,
+				mlx->player_pos_y * SIZE);
 			mlx->player_pos_x = new_pos_x;
 			mlx->player_pos_y = new_pos_y;
 		}

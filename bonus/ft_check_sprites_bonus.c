@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:41 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 15:35:02 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 10:42:57 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	int	ft_check_ghost_sprites(t_mlx_data *mlx)
 static	int	ft_check_player_dying_sprites(t_mlx_data *mlx)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 11)
 	{
@@ -63,12 +63,13 @@ static	int	ft_check_player_actions_sprites(t_mlx_data *mlx)
 
 int	ft_check_sprites(t_mlx_data *mlx)
 {
-	if (!mlx->sprites.black_wall || !mlx->sprites.exit || !mlx->sprites.food
-		|| !mlx->sprites.wall || !ft_check_player_actions_sprites(mlx) 
-		|| !ft_check_player_dying_sprites(mlx) || !ft_check_ghost_sprites(mlx))
+	if (!mlx->sprites.black_wall || !mlx->sprites.exit
+		|| !mlx->sprites.food || !mlx->sprites.wall
+		|| !ft_check_player_actions_sprites(mlx)
+		|| !ft_check_player_dying_sprites(mlx)
+		|| !ft_check_ghost_sprites(mlx))
 		return (0);
 	return (1);
-
 }
 
 void	check_file_extention(char *file)

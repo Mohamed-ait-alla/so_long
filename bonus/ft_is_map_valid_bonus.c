@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 16:29:03 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 09:42:20 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_init(int *i, int *check_e, int *check_p, int *check_c)
 {
 	*i = 0;
 	*check_e = 0;
-	*check_p= 0;
+	*check_p = 0;
 	*check_c = 0;
 }
 
@@ -51,7 +51,7 @@ int	is_epc_in_map(char **map)
 
 int	is_map_rectangular(char **map)
 {
-	int first_row_len;
+	int	first_row_len;
 	int	i;
 
 	first_row_len = ft_strlen(map[0]) - 1;
@@ -100,14 +100,15 @@ int	is_map_has_other_chars(char **map)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j] && map[i][j] != '\n')
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != 'G')
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C'
+				&& map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != 'G')
 				return (0);
 			j++;
 		}

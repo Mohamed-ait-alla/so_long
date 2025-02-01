@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 19:17:05 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 09:25:48 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # define SIZE 32
 # define RED "\033[1;31m"
 # define YELLOW "\033[1;33m"
+# define GREEN_BOLD "\033[1;32m"
+# define CYAN_BOLD "\033[1;36m"
+# define RESET "\033[0m"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>

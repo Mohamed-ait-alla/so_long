@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 16:07:26 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 09:57:04 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_win(t_mlx_data *mlx)
 	exit(1);
 }
 
-void	ft_lose()
+void	ft_lose(void)
 {
 	ft_printf("\n╔══════════════════════════════╗\n");
 	ft_printf("║          💀 Oops! 💀         ║\n");
@@ -43,14 +43,11 @@ void	ft_lose()
 	exit(1);
 }
 
-
-
-
 static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (mlx->map[i])
 	{
@@ -63,6 +60,38 @@ static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
 		}
 		i++;
 	}
+	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
+	if (!mlx->ghosts)
+	{
+		ft_printf("Error\n: Failed to allocate memory for ghosts!\n");
+		exit(1);
+	}
+}
+
+static void	ft_draw_map(t_mlx_data *mlx, int i, int j, int x)
+{
+	if (mlx->map[i][j] == '1')
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+			mlx->sprites.wall, j * SIZE, i * SIZE);
+	if (mlx->map[i][j] == 'P')
+	{
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+			mlx->player_actions[0][0], j * SIZE, i * SIZE);
+		mlx->player_pos_x = j;
+		mlx->player_pos_y = i;
+	}
+	if (mlx->map[i][j] == 'E')
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+			mlx->sprites.exit, j * SIZE, i * SIZE);
+	if (mlx->map[i][j] == 'C')
+	{
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+			mlx->sprites.food, j * SIZE, i * SIZE);
+		mlx->n_of_collectibles++;
+	}
+	if (mlx->map[i][j] == 'G')
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
+			mlx->sprites.ghost_up[x % 6], j * SIZE, i * SIZE);
 }
 
 void	ft_init_game(t_mlx_data *mlx)
@@ -72,13 +101,6 @@ void	ft_init_game(t_mlx_data *mlx)
 	int			x;
 
 	ft_calc_number_of_ghosts(mlx);
-	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
-	if (!mlx->ghosts)
-	{
-		ft_printf("Error\n: Failed to allocate memory for ghosts!\n");
-		exit(1);
-	}
-	
 	i = 0;
 	x = 0;
 	while (mlx->map[i])
@@ -86,29 +108,14 @@ void	ft_init_game(t_mlx_data *mlx)
 		j = 0;
 		while (mlx->map[i][j])
 		{
-			if (mlx->map[i][j] == '1')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.wall, j * SIZE,i * SIZE);
-			if (mlx->map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->player_actions[0][0], j * SIZE, i * SIZE);
-				mlx->player_pos_x = j;
-				mlx->player_pos_y = i;
-			}
-			if (mlx->map[i][j] == 'E')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.exit, j * SIZE, i * SIZE);
-			if (mlx->map[i][j] == 'C')
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.food, j * SIZE, i * SIZE);
-				mlx->n_of_collectibles++;
-			}
+			ft_draw_map(mlx, i, j, x);
 			if (mlx->map[i][j] == 'G')
 			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.ghost_up[x % 6], j * SIZE, i * SIZE);
 				mlx->ghosts[x].n_pos_x = j;
-				mlx->ghosts[x].n_pos_y = i;                                                                                                                                                                                                                                                  
-				mlx->ghosts[x].old_pos_x = j;                                                                                                                                                                                                                                                  
+				mlx->ghosts[x].n_pos_y = i;
+				mlx->ghosts[x].old_pos_x = j;
 				mlx->ghosts[x].old_pos_y = i;
-				x++;                                                                                                                                                                                                                                             
+				x++;
 			}
 			j++;
 		}

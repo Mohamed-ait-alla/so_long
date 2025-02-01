@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:34:43 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 16:21:39 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 10:40:10 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_free_window(t_mlx_data *mlx)
 	free(mlx->mlx_ptr);
 }
 
-static void ft_cleanup_ghost_sprites(t_mlx_data *mlx)
+static void	ft_cleanup_ghost_sprites(t_mlx_data *mlx)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 19:00:16 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 10:44:50 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ft_check_error_map(char **map, t_frame frame)
 		ft_error(map, frame.n_row, flag);
 	}
 	if (!is_epc_in_map(map) || !is_map_rectangular(map)
-		|| !is_map_closed_by_walls(map, frame) || !is_map_has_other_chars(map))
+		|| !is_map_closed_by_walls(map, frame)
+		|| !is_map_has_other_chars(map))
 	{
 		if (!is_epc_in_map(map))
 			flag = 0;
@@ -80,7 +81,7 @@ char	**ft_read_map(char *file, t_frame *frame)
 		map[i] = get_next_line(fd);
 		if (!map[i])
 			ft_free_map(map, i);
-		i++;	
+		i++;
 	}
 	map[i] = NULL;
 	get_next_line(-2);
