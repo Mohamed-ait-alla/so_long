@@ -6,13 +6,13 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/01 09:35:09 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:52:38 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_init_mlx_list(t_mlx_data *mlx)
+static void	ft_init_mlx_list(t_mlx_data *mlx)
 {
 	mlx->n_of_collectibles = 0;
 	mlx->n_of_moves = 0;

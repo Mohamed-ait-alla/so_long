@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/01 09:40:23 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:54:57 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ static void	ft_set_directions(t_mlx_data *mlx, int sc, int n_pos_x, int n_pos_y)
 
 int	ft_move_player(int keycode, t_mlx_data *mlx)
 {
-	int	new_pos_x;
-	int	new_pos_y;
+	int		new_pos_x;
+	int		new_pos_y;
 
 	new_pos_x = mlx->player_pos_x;
 	new_pos_y = mlx->player_pos_y;
@@ -120,5 +120,11 @@ int	ft_move_player(int keycode, t_mlx_data *mlx)
 	if (keycode == XK_Escape)
 		close_window_with_x(mlx);
 	ft_set_directions(mlx, keycode, new_pos_x, new_pos_y);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window, mlx->sprites.wall, ((mlx->c_map_len * 32) - 8 * 8) / 2 + 32, 0);
+	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, ((mlx->c_map_len * 32) - 8 * 8) / 2  , 20, 0xFFFF00, "Moves: ");
+	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, ((mlx->c_map_len * 32) - 8 * 8) / 2 + 45, 20, 0xFFFF00, ft_itoa(mlx->n_of_moves));
+	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, ((mlx->c_map_len * 32) - 8 * 8) / 2 + 46, 20, 0xFFFF00, ft_itoa(mlx->n_of_moves));
+	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, ((mlx->c_map_len * 32) - 8 * 8) / 2 + 45, 21, 0xFFFF00, ft_itoa(mlx->n_of_moves));
+	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, ((mlx->c_map_len * 32) - 8 * 8) / 2 + 46, 21, 0xFFFF00, ft_itoa(mlx->n_of_moves));
 	return (0);
 }
