@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 12:44:15 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:26:46 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	ft_error(char **map, int i, int flag)
 {
-	char	*flag_msg[4];
+	char	*flag_msg[5];
 
 	flag_msg[0] = ": One letter in these (EPC) is messed in map!\n";
 	flag_msg[1] = ": Map is not rectangular!\n";
 	flag_msg[2] = ": Map is not closed by walls!\n";
 	flag_msg[3] = ": Map has a not valid character!\n";
+	flag_msg[4] = ": Map exceeds the resolution of the screen\n";
 	ft_printf(RED "Error\n%s", flag_msg[flag]);
 	ft_free_map(map, i);
 	exit(1);
@@ -43,9 +44,9 @@ void	ft_check_error_map(char **map, t_frame frame)
 	int	flag;
 
 	flag = -1;
-	if ((frame.n_col - 1) * SIZE > 1920 || frame.n_row * SIZE > 1080)
+	if ((frame.n_col - 1) * SIZE > 1920 || frame.n_row * SIZE > 1020)
 	{
-		ft_printf(RED "Error\n: Map exceeds the resolution of the screen\n");
+		flag = 4;
 		ft_error(map, frame.n_row, flag);
 	}
 	if (!is_epc_in_map(map) || !is_map_rectangular(map)
