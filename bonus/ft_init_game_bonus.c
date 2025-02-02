@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 14:36:46 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:33:26 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ void	ft_init_game(t_mlx_data *mlx)
 			{
 				mlx->ghosts[x].n_pos_x = j;
 				mlx->ghosts[x].n_pos_y = i;
-				mlx->ghosts[x].old_pos_x = j;
-				mlx->ghosts[x].old_pos_y = i;
+				mlx->ghosts[x].oldPosX = j;
+				mlx->ghosts[x].oldPosY = i;
 				x++;
 			}
 			j++;
