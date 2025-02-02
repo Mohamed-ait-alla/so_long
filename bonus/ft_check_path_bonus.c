@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:02:46 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/01 10:43:35 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 10:57:53 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	flood_fill(t_mlx_data *mlx, int x, int y)
 		|| mlx->map[y][x] == '0' || mlx->map[y][x] == 'E'
 		|| mlx->map[y][x] == 'G')
 	{
-		if (mlx->map[y][x] == 'E')
+		if (mlx->map[y][x] == 'E' || mlx->map[y][x] == 'G')
 		{
 			mlx->copy_map[y][x] = 'V';
 			return ;

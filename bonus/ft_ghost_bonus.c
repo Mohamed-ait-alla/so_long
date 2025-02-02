@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:31:44 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/01 11:38:13 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 09:37:30 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	ft_ghost_animation(t_mlx_data *mlx)
 	if (!ft_check_distance_with_ghosts(mlx,
 			mlx->player_pos_x, mlx->player_pos_y))
 	{
-		if (i == 1000)
+		if (i == 100)
 			ft_chase_player(mlx);
 	}
 	while (j < mlx->n_of_ghosts)
