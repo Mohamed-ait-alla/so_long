@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:02:46 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 10:57:53 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:43:40 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ static void	ft_is_reachable(t_mlx_data *mlx, int i, int j)
 {
 	if (mlx->map[i][j] == 'C' && mlx->copy_map[i][j] != 'V')
 	{
-		ft_printf("Error\n: Can't reach a collectible!\n");
+		ft_printf(RED "Error\n: Can't reach a collectible!\n");
 		ft_free_map(mlx->copy_map, mlx->r_map_len);
 		ft_free_map(mlx->map, mlx->r_map_len);
 		exit(1);
 	}
 	if (mlx->map[i][j] == 'E' && mlx->copy_map[i][j] != 'V')
 	{
-		ft_printf("Error\n: Can't reach exit!\n");
+		ft_printf(RED "Error\n: Can't reach exit!\n");
 		ft_free_map(mlx->copy_map, mlx->r_map_len);
 		ft_free_map(mlx->map, mlx->r_map_len);
 		exit(1);

@@ -6,13 +6,19 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 11:52:59 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:39:49 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-# define SIZE 32 
+# define SIZE 32
+# define RED "\033[1;31m"
+# define YELLOW "\033[1;33m"
+# define GREEN_BOLD "\033[1;32m"
+# define RED_BOLD "\033[1;31m"
+# define CYAN_BOLD "\033[1;36m"
+# define RESET "\033[0m" 
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -56,7 +62,6 @@ typedef struct s_ghost
 	int		n_pos_y;
 	int		old_pos_x;
 	int		old_pos_y;
-	char	tile;
 }	t_ghost;
 
 typedef struct s_mlx_data

@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/01 21:48:39 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:36:46 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,36 @@
 
 void	ft_win(t_mlx_data *mlx)
 {
-	ft_printf("\n╔══════════════════════════════════════════╗\n");
-	ft_printf("║         🎉 Congratulations! 🎉           ║\n");
-	ft_printf("║     You're Boss, You Won the Game! 🎯    ║\n");
-	ft_printf("╚══════════════════════════════════════════╝\n\n");
-	ft_printf("\n╔══════════════════════════════════════╗\n");
-	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf("║            \033[1m🌟 mait-all 🌟\033[0m            ║\n");
-	ft_printf("╠══════════════════════════════════════╣\n");
-	ft_printf("║       Thank you for playing! 🎮      ║\n");
-	ft_printf("╚══════════════════════════════════════╝\n\n");
+	ft_printf(CYAN_BOLD "\n		╔══════════════════════════════════════╗\n");
+	ft_printf(CYAN_BOLD "		║        🎉 Congratulations! 🎉        ║\n");
+	ft_printf(CYAN_BOLD "		║           You Won the Game! 🎯💪     ║\n");
+	ft_printf(CYAN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
+	ft_printf(GREEN_BOLD "		╔══════════════════════════════════════╗\n");
+	ft_printf(GREEN_BOLD "		║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf(GREEN_BOLD "		║            🌟 mait-all 🌟            ║\n");
+	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
+	ft_printf(GREEN_BOLD "		║       Thank you for playing! 🎮      ║\n");
+	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
+	ft_printf(GREEN_BOLD "		║              1  3  3  7              ║\n");
+	ft_printf(GREEN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
 	ft_cleanup(mlx);
 	exit(1);
 }
 
 void	ft_lose(t_mlx_data *mlx)
 {
-	ft_printf("\n╔══════════════════════════════╗\n");
-	ft_printf("║          💀 Oops! 💀         ║\n");
-	ft_printf("║   You're Noop, Game Over!    ║\n");
-	ft_printf("╚══════════════════════════════╝\n\n");
-	ft_printf("\n╔══════════════════════════════════════╗\n");
-	ft_printf("║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf("║            \033[1m🌟 mait-all 🌟\033[0m            ║\n");
-	ft_printf("╠══════════════════════════════════════╣\n");
-	ft_printf("║       Thank you for playing! 🎮      ║\n");
-	ft_printf("╚══════════════════════════════════════╝\n\n");
+	ft_printf(RED_BOLD "\n   		    ╔══════════════════════════════╗\n");
+	ft_printf(RED_BOLD "   		    ║          💀 Oops! 💀         ║\n");
+	ft_printf(RED_BOLD "   		    ║   You're Noop, Game Over!    ║\n");
+	ft_printf(RED_BOLD "   		    ╚══════════════════════════════╝\n\n" RESET);
+	ft_printf(GREEN_BOLD "		╔══════════════════════════════════════╗\n");
+	ft_printf(GREEN_BOLD "		║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf(GREEN_BOLD "		║            🌟 mait-all 🌟            ║\n");
+	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
+	ft_printf(GREEN_BOLD "		║       Thank you for playing! 🎮      ║\n");
+	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
+	ft_printf(GREEN_BOLD "		║              1  3  3  7              ║\n");
+	ft_printf(GREEN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
 	ft_cleanup(mlx);
 	exit(1);
 }
@@ -64,7 +68,7 @@ static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
 	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
 	if (!mlx->ghosts)
 	{
-		ft_printf("Error\n: Failed to allocate memory for ghosts!\n");
+		ft_printf(RED "Error\n: Failed to allocate memory for ghosts!\n");
 		exit(1);
 	}
 }
