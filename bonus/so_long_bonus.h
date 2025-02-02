@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 09:34:19 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:52:59 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_mlx_data
 	t_sprites	sprites;
 }	t_mlx_data;
 
+void	ft_chase_player(t_mlx_data *mlx);
 void	ft_display_moves_on_screen(t_mlx_data *mlx);
 void	ft_cleanup(t_mlx_data *mlx);
 void	ft_free_window(t_mlx_data *mlx);
