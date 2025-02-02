@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 10:24:44 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:54:36 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ static	void	ft_init_mlx_list(t_mlx_data *mlx)
 
 int	close_window_with_x(t_mlx_data *mlx)
 {
+	ft_printf(RED "\n   		    ╔══════════════════════════════╗\n");
+	ft_printf(RED "   		    ║          💀 Oops! 💀         ║\n");
+	ft_printf(RED "   		    ║           Game Ended!        ║\n");
+	ft_printf(RED "   		    ╚══════════════════════════════╝\n\n" RESET);
 	ft_cleanup(mlx);
 	exit(1);
 }

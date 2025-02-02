@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 20:40:31 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:49:41 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void	ft_win(t_mlx_data *mlx)
 {
-	ft_printf(CYAN_BOLD "\n╔══════════════════════════════════════════╗\n");
-	ft_printf(CYAN_BOLD "║         🎉 Congratulations! 🎉           ║\n");
-	ft_printf(CYAN_BOLD "║     You're Boss, You Won the Game! 🎯    ║\n");
-	ft_printf(CYAN_BOLD "╚══════════════════════════════════════════╝\n\n" RESET);
-	ft_printf(GREEN_BOLD "\n╔══════════════════════════════════════╗\n");
-	ft_printf(GREEN_BOLD "║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf(GREEN_BOLD "║            🌟 "RED "mait-all" GREEN_BOLD" 🌟            ║\n");
-	ft_printf(GREEN_BOLD "╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "║       Thank you for playing! 🎮      ║\n");
-	ft_printf(GREEN_BOLD "╚══════════════════════════════════════╝\n\n" RESET);
+	ft_printf(CYAN_BOLD "\n		╔══════════════════════════════════════╗\n");
+	ft_printf(CYAN_BOLD "		║        🎉 Congratulations! 🎉        ║\n");
+	ft_printf(CYAN_BOLD "		║           You Won the Game! 🎯💪     ║\n");
+	ft_printf(CYAN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
+	ft_printf(GREEN_BOLD "		╔══════════════════════════════════════╗\n");
+	ft_printf(GREEN_BOLD "		║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf(GREEN_BOLD "		║            🌟 mait-all 🌟            ║\n");
+	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
+	ft_printf(GREEN_BOLD "		║       Thank you for playing! 🎮      ║\n");
+	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
+	ft_printf(GREEN_BOLD "		║              1  3  3  7              ║\n");
+	ft_printf(GREEN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
 	ft_cleanup(mlx);
 	exit(1);
 }
