@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 17:33:26 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:56:49 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
 	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
 	if (!mlx->ghosts)
 	{
-		ft_printf(RED "Error\n: Failed to allocate memory for ghosts!\n");
+		ft_printf(RED "Error\n: Failed to allocate memory for ghosts!\n" RESET);
 		exit(1);
 	}
 }

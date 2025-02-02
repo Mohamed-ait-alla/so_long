@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 14:54:00 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:54:29 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 void	ft_display_moves_on_screen(t_mlx_data *mlx)
 {
+	char	*moves;
+
+	moves = ft_itoa(mlx->n_of_moves);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
 		mlx->sprites.wall, 32, 0);
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, 3, 20, 0xFF0000,
 		"Moves: ");
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, 45, 20, 0xFF0000,
-		ft_itoa(mlx->n_of_moves));
+		moves);
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, 46, 20, 0xFF0000,
-		ft_itoa(mlx->n_of_moves));
+		moves);
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, 45, 21, 0xFF0000,
-		ft_itoa(mlx->n_of_moves));
+		moves);
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_window, 46, 21, 0xFF0000,
-		ft_itoa(mlx->n_of_moves));
+		moves);
+	free(moves);
 }
 
 static void	ft_init_mlx_list(t_mlx_data *mlx)

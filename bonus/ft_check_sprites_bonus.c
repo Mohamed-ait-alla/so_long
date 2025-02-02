@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:41 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 12:43:21 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:57:14 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	check_file_extention(char *file)
 			&& file_set_h[2] == 'e' && file_set_h[3] == 'r')
 		|| (file_set[1] != 'b' || file_set[2] != 'e' || file_set[3] != 'r'))
 	{
-		ft_printf(RED "Error\n: Invalid map file extention!\n");
+		ft_printf(RED "Error\n: Invalid map file extention!\n" RESET);
 		exit(1);
 	}
 }

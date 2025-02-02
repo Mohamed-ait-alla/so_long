@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/31 19:17:20 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:58:45 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ int	ft_move_player(int keycode, t_mlx_data *mlx)
 	if (keycode == XK_Escape)
 		close_window_with_x(mlx);
 	ft_set_directions(mlx, keycode, new_pos_x, new_pos_y);
-	ft_printf(YELLOW "number of movements: %d |\n", mlx->n_of_moves);
+	ft_printf(YELLOW "number of movements: %d |\n" RESET, mlx->n_of_moves);
 	return (0);
 }
