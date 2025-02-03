@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:34:43 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/01 10:40:10 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:53:19 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_cleanup(t_mlx_data *mlx)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.exit);
 	if (mlx->sprites.food)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->sprites.food);
-	free(mlx->ghosts);
+	if (mlx->ghosts)
+		free(mlx->ghosts);
 	ft_cleanup_player_sprites(mlx);
 	ft_cleanup_ghost_sprites(mlx);
 	ft_free_map(mlx->map, mlx->r_map_len);

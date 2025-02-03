@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 14:57:26 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:59:06 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
+	ft_bzero(&mlx, sizeof(t_mlx_data));
 	ft_init_mlx_list(&mlx);
 	check_file_extention(av[1]);
 	ft_calc_width_and_height(av[1], &frame);
@@ -48,9 +49,9 @@ int	main(int ac, char **av)
 	ft_check_error_map(mlx.map, frame);
 	ft_check_path(&mlx, frame);
 	mlx.mlx_ptr = mlx_init();
-	ft_load_sprites(&mlx);
 	mlx.mlx_window = mlx_new_window(mlx.mlx_ptr,
 			(frame.n_col - 1) * SIZE, frame.n_row * SIZE, "so_long");
+	ft_load_sprites(&mlx);
 	ft_init_game(&mlx);
 	mlx_loop_hook(mlx.mlx_ptr, ft_animation, &mlx);
 	mlx_hook(mlx.mlx_window, 17, 0, close_window_with_x, &mlx);

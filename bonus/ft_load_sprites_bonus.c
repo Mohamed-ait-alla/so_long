@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:39:37 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 17:56:31 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:42:50 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void	ft_load_sprites(t_mlx_data *mlx)
 	if (!ft_check_sprites(mlx))
 	{
 		ft_printf(RED "Error\n: Failed to load sprites!\n" RESET);
+		ft_cleanup(mlx);
 		exit(1);
 	}
 }
