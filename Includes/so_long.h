@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:13:41 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:14:16 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,31 @@ typedef struct s_mlx_data
 	t_sprites	sprites;
 }	t_mlx_data;
 
-void	check_file_extention(char *file);
-void	ft_check_path(t_mlx_data *mlx, t_frame frame);
-void	ft_cleanup(t_mlx_data *mlx);
-void	ft_free_map(char **map, int i);
-void	ft_free_window(t_mlx_data *mlx);
-void	ft_win(t_mlx_data *mlx);
+// Functions used for initializing, starting, ending and drawing the game
 void	ft_load_sprites(t_mlx_data *mlx);
 void	ft_calc_width_and_height(char	*file, t_frame *frame);
 void	ft_init_game(t_mlx_data *mlx);
-void	ft_check_error_map(char **map, t_frame frame);
+void	ft_win(t_mlx_data *mlx);
 char	**ft_read_map(char *file, t_frame *frame);
 int		ft_check_sprites(t_mlx_data *mlx);
+int		close_window_with_x(t_mlx_data *data);
+
+// Functions responsible for cleaning up and freeing allocated memory
+void	ft_cleanup(t_mlx_data *mlx);
+void	ft_free_map(char **map, int i);
+void	ft_free_window(t_mlx_data *mlx);
+
+// Functions responsible for moving player and animating player movement
+int		ft_animation(t_mlx_data *mlx);
+int		ft_move_player(int keycode, t_mlx_data *mlx);
+
+// Functions used for map validation
 int		is_map_has_other_chars(char **map);
 int		is_map_closed_by_walls(char **map, t_frame frame);
 int		is_map_rectangular(char **map);
 int		is_epc_in_map(char **map);
-int		ft_animation(t_mlx_data *mlx);
-int		close_window_with_x(t_mlx_data *data);
-int		ft_move_player(int keycode, t_mlx_data *mlx);
+void	ft_check_error_map(char **map, t_frame frame);
+void	ft_check_path(t_mlx_data *mlx, t_frame frame);
+void	check_file_extention(char *file);
 
 #endif
