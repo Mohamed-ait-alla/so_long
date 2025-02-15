@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:39:37 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:01:24 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:27:42 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 static	void	ft_load_ghost_right_and_left_sprites(t_mlx_data *mlx, int size)
 {

@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:13:59 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:26:47 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../Includes/so_long.h"
 
 int	ft_animation(t_mlx_data *mlx)
 {

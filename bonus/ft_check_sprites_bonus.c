@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:41 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:11:15 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:28:09 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 static	int	ft_check_ghost_sprites(t_mlx_data *mlx)
 {

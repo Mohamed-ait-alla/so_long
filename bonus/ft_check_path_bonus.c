@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 15:02:46 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:01:54 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:28:12 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 static void	ft_get_pos_of_p(t_mlx_data *mlx)
 {

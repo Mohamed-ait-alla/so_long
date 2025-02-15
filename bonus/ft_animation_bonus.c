@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:50:37 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 15:47:49 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:28:29 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../bonus/so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 void	ft_player_dying_animation(t_mlx_data *mlx)
 {

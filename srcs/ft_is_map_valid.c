@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:36:39 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/30 21:16:59 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:26:51 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../Includes/so_long.h"
 
 static void	ft_init(int *i, int *check_e, int *check_p, int *check_c)
 {

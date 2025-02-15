@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:01:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:01:11 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:27:29 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 void	ft_display_moves_on_screen(t_mlx_data *mlx)
 {

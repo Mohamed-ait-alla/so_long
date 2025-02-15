@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 15:16:48 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:27:36 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 {

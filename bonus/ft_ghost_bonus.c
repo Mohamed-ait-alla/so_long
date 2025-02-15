@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:31:44 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:11:30 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:28:00 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 int	ft_can_move_toward_player(t_mlx_data *mlx, int ghost_index,
 								int P_new_pos_x, int P_new_pos_y)

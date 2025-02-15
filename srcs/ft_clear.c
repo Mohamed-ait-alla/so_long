@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 18:34:43 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/03 10:40:12 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:26:58 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../Includes/so_long.h"
 
 void	ft_free_map(char **map, int i)
 {

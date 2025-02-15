@@ -6,11 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:55:23 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 15:10:03 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:28:36 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../bonus/so_long_bonus.h"
+#include "../Includes/so_long_bonus.h"
 
 static void	ft_set_ghost_directions_diagonal(t_mlx_data *mlx, int i,
 												int dx, int dy)
