@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 21:07:30 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 15:03:03 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:40:48 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ void	check_file_extention(char *file)
 	char	*file_ext_h;
 
 	file_ext = ft_memchr(file, '.', ft_strlen(file));
-	file_ext_h = ft_memchr(file, '/', ft_strlen(file)) + 1;
+	file_ext_h = ft_memchr(file, '/', ft_strlen(file));
+	if (!file_ext_h)
+	{
+		ft_printf(RED "Error\n: Invalid path. Navigate to the 'maps' folder and choose a map.\n");
+		exit(1);
+	}
 	if (!file_ext || !file_ext_h || (file_ext_h[0] == '.' && file_ext_h[1] == 'b'
 			&& file_ext_h[2] == 'e' && file_ext_h[3] == 'r')
 		|| (file_ext[1] != 'b' || file_ext[2] != 'e' || file_ext[3] != 'r') )
