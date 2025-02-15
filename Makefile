@@ -33,6 +33,7 @@ BSRCS = bonus/so_long_bonus.c \
         bonus/ft_animation_bonus.c \
         bonus/ft_is_map_valid_bonus.c \
         bonus/ft_move_player_bonus.c \
+		bonus/ft_chase_player_bonus.c \
         ./get_next_line/get_next_line.c \
         ./get_next_line/get_next_line_utils.c \
         ./ft_printf/ft_printf.c \

@@ -6,54 +6,11 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 09:46:55 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:16:48 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-void	ft_player_dying_animation(t_mlx_data *mlx)
-{
-	static int	frame = 0;
-	static int	delay = 0;
-
-	if (mlx->is_died == 0)
-	{
-		if (delay++ % 15000 == 0)
-		{
-			if (frame < 10)
-			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
-					mlx->player_dying[frame], mlx->player_pos_x * SIZE,
-					mlx->player_pos_y * SIZE);
-				frame++;
-			}
-			else
-				ft_lose(mlx);
-		}
-	}
-}
-
-int	ft_animation(t_mlx_data *mlx)
-{
-	static int	frame_counter = 0;
-	static int	frame_index = 0;
-
-	ft_ghost_animation(mlx);
-	ft_player_dying_animation(mlx);
-	if (!mlx->is_died)
-		return (0);
-	frame_counter++;
-	if (frame_counter >= 15000)
-	{
-		frame_index = (frame_index + 1) % 3;
-		mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_window,
-			mlx->player_actions[mlx->direction][frame_index],
-			mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
-		frame_counter = 0;
-	}
-	return (0);
-}
 
 static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 {

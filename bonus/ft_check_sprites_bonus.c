@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:41 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 17:57:14 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:02:26 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,14 @@ int	ft_check_sprites(t_mlx_data *mlx)
 
 void	check_file_extention(char *file)
 {
-	char	*file_set;
-	char	*file_set_h;
+	char	*file_ext;
+	char	*file_ext_h;
 
-	file_set = ft_memchr(file, '.', ft_strlen(file));
-	file_set_h = ft_memchr(file, '/', ft_strlen(file)) + 1;
-	if (!file_set || !file_set_h)
-		return ;
-	if ((file_set_h[0] == '.' && file_set_h[1] == 'b'
-			&& file_set_h[2] == 'e' && file_set_h[3] == 'r')
-		|| (file_set[1] != 'b' || file_set[2] != 'e' || file_set[3] != 'r'))
+	file_ext = ft_memchr(file, '.', ft_strlen(file));
+	file_ext_h = ft_memchr(file, '/', ft_strlen(file)) + 1;
+	if (!file_ext || !file_ext_h || (file_ext_h[0] == '.' && file_ext_h[1] == 'b'
+			&& file_ext_h[2] == 'e' && file_ext_h[3] == 'r')
+		|| (file_ext[1] != 'b' || file_ext[2] != 'e' || file_ext[3] != 'r') )
 	{
 		ft_printf(RED "Error\n: Invalid map file extention!\n" RESET);
 		exit(1);

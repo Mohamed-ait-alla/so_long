@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/02 17:30:30 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:14:28 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_ghost
 {
 	int		n_pos_x;
 	int		n_pos_y;
-	int		oldPosX;
-	int		oldPosY;
+	int		o_pos_x;
+	int		o_pos_y;
 }	t_ghost;
 
 typedef struct s_mlx_data
