@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/03 10:40:59 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:15:28 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	ft_win(t_mlx_data *mlx)
 {
-	ft_printf(CYAN_BOLD "\n		╔══════════════════════════════════════╗\n");
-	ft_printf(CYAN_BOLD "		║        🎉 Congratulations! 🎉        ║\n");
-	ft_printf(CYAN_BOLD "		║           You Won the Game! 🎯💪     ║\n");
-	ft_printf(CYAN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
-	ft_printf(GREEN_BOLD "		╔══════════════════════════════════════╗\n");
-	ft_printf(GREEN_BOLD "		║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf(GREEN_BOLD "		║            🌟 mait-all 🌟            ║\n");
-	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "		║       Thank you for playing! 🎮      ║\n");
-	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "		║              1  3  3  7              ║\n");
-	ft_printf(GREEN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
+	ft_printf(B_CYAN "\n		╔══════════════════════════════════════╗\n");
+	ft_printf(B_CYAN "		║        🎉 Congratulations! 🎉        ║\n");
+	ft_printf(B_CYAN "		║           You Won the Game! 🎯💪     ║\n");
+	ft_printf(B_CYAN "		╚══════════════════════════════════════╝\n\n" RST);
+	ft_printf(B_GREEN "		╔══════════════════════════════════════╗\n");
+	ft_printf(B_GREEN "		║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf(B_GREEN "		║            🌟 mait-all 🌟            ║\n");
+	ft_printf(B_GREEN "		╠══════════════════════════════════════╣\n");
+	ft_printf(B_GREEN "		║       Thank you for playing! 🎮      ║\n");
+	ft_printf(B_GREEN "		╠══════════════════════════════════════╣\n");
+	ft_printf(B_GREEN "		║              1  3  3  7              ║\n");
+	ft_printf(B_GREEN "		╚══════════════════════════════════════╝\n\n" RST);
 	ft_cleanup(mlx);
 	exit(1);
 }
@@ -74,7 +74,7 @@ void	ft_load_sprites(t_mlx_data *mlx)
 	ft_load_player_actions_sprites(mlx, size);
 	if (!ft_check_sprites(mlx))
 	{
-		ft_printf(RED "Error\n: Failed to load sprites!\n" RESET);
+		ft_printf(RED "Error\n: Failed to load sprites!\n" RST);
 		ft_cleanup(mlx);
 		exit(1);
 	}

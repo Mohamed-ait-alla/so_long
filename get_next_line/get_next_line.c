@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 09:51:14 by mait-all          #+#    #+#             */
-/*   Updated: 2025/01/08 21:41:15 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:52:44 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*get_next_line(int fd)
 	if (fd == -2)
 	{
 		free(readed_lines);
-		return NULL;
+		return (NULL);
 	}
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

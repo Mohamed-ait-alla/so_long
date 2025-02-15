@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:48:59 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 15:43:10 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:01:35 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 
 void	ft_win(t_mlx_data *mlx)
 {
-	ft_printf(CYAN_BOLD "\n		╔══════════════════════════════════════╗\n");
-	ft_printf(CYAN_BOLD "		║        🎉 Congratulations! 🎉        ║\n");
-	ft_printf(CYAN_BOLD "		║           You Won the Game! 🎯💪     ║\n");
-	ft_printf(CYAN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
-	ft_printf(GREEN_BOLD "		╔══════════════════════════════════════╗\n");
-	ft_printf(GREEN_BOLD "		║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf(GREEN_BOLD "		║            🌟 mait-all 🌟            ║\n");
-	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "		║       Thank you for playing! 🎮      ║\n");
-	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "		║              1  3  3  7              ║\n");
-	ft_printf(GREEN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
+	ft_printf(B_CYAN "\n		╔══════════════════════════════════════╗\n");
+	ft_printf(B_CYAN "		║        🎉 Congratulations! 🎉        ║\n");
+	ft_printf(B_CYAN "		║           You Won the Game! 🎯💪     ║\n");
+	ft_printf(B_CYAN "		╚══════════════════════════════════════╝\n\n" RST);
+	ft_printf(B_GREEN "		╔══════════════════════════════════════╗\n");
+	ft_printf(B_GREEN "		║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf(B_GREEN "		║            🌟 mait-all 🌟            ║\n");
+	ft_printf(B_GREEN "		╠══════════════════════════════════════╣\n");
+	ft_printf(B_GREEN "		║       Thank you for playing! 🎮      ║\n");
+	ft_printf(B_GREEN "		╠══════════════════════════════════════╣\n");
+	ft_printf(B_GREEN "		║              1  3  3  7              ║\n");
+	ft_printf(B_GREEN "		╚══════════════════════════════════════╝\n\n" RST);
 	ft_cleanup(mlx);
 	exit(1);
 }
 
 void	ft_lose(t_mlx_data *mlx)
 {
-	ft_printf(RED_BOLD "\n   		    ╔══════════════════════════════╗\n");
-	ft_printf(RED_BOLD "   		    ║          💀 Oops! 💀         ║\n");
-	ft_printf(RED_BOLD "   		    ║   You're Noop, Game Over!    ║\n");
-	ft_printf(RED_BOLD "   		    ╚══════════════════════════════╝\n\n" RESET);
-	ft_printf(GREEN_BOLD "		╔══════════════════════════════════════╗\n");
-	ft_printf(GREEN_BOLD "		║   👨‍💻 Code Crafted with Passion by: ║\n");
-	ft_printf(GREEN_BOLD "		║            🌟 mait-all 🌟            ║\n");
-	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "		║       Thank you for playing! 🎮      ║\n");
-	ft_printf(GREEN_BOLD "		╠══════════════════════════════════════╣\n");
-	ft_printf(GREEN_BOLD "		║              1  3  3  7              ║\n");
-	ft_printf(GREEN_BOLD "		╚══════════════════════════════════════╝\n\n" RESET);
+	ft_printf(B_RED "\n   		    ╔══════════════════════════════╗\n");
+	ft_printf(B_RED "   		    ║          💀 Oops! 💀         ║\n");
+	ft_printf(B_RED "   		    ║   You're Noop, Game Over!    ║\n");
+	ft_printf(B_RED "   		    ╚══════════════════════════════╝\n\n" RST);
+	ft_printf(B_GREEN "		╔══════════════════════════════════════╗\n");
+	ft_printf(B_GREEN "		║   👨‍💻 Code Crafted with Passion by: ║\n");
+	ft_printf(B_GREEN "		║            🌟 mait-all 🌟            ║\n");
+	ft_printf(B_GREEN "		╠══════════════════════════════════════╣\n");
+	ft_printf(B_GREEN "		║       Thank you for playing! 🎮      ║\n");
+	ft_printf(B_GREEN "		╠══════════════════════════════════════╣\n");
+	ft_printf(B_GREEN "		║              1  3  3  7              ║\n");
+	ft_printf(B_GREEN "		╚══════════════════════════════════════╝\n\n" RST);
 	ft_cleanup(mlx);
 	exit(1);
 }
@@ -68,7 +68,7 @@ static void	ft_calc_number_of_ghosts(t_mlx_data *mlx)
 	mlx->ghosts = malloc(mlx->n_of_ghosts * sizeof(t_ghost));
 	if (!mlx->ghosts)
 	{
-		ft_printf(RED "Error\n: Failed to allocate memory for ghosts!\n" RESET);
+		ft_printf(RED "Error\n: Failed to allocate memory for ghosts!\n" RST);
 		exit(1);
 	}
 }

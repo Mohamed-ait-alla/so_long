@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:27:16 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/03 10:16:05 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:13:59 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	ft_move_to_direction(t_mlx_data *mlx, int new_pos_x, int new_pos_y)
 				mlx->player_pos_x * SIZE, mlx->player_pos_y * SIZE);
 			mlx->player_pos_x = new_pos_x;
 			mlx->player_pos_y = new_pos_y;
-			ft_printf(YELLOW "number of movements: %d |\n" RESET, mlx->n_of_moves);
+			ft_printf(YELLOW"number of movements: %d |\n"RST, mlx->n_of_moves);
 		}
 	}
 }
