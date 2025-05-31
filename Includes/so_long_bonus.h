@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:02:20 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 17:15:53 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/05/31 18:26:28 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <mlx.h>
 # include "../get_next_line/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include <X11/keysym.h>
 
 typedef struct s_frame
