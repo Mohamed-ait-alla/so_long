@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 21:57:32 by mait-all          #+#    #+#             */
-/*   Updated: 2025/05/08 19:49:08 by mait-all         ###   ########.fr       */
+/*   Created: 2024/10/23 19:54:45 by mait-all          #+#    #+#             */
+/*   Updated: 2025/05/31 18:53:20 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strdup(const char *s1)
 {
-	char	*sub;
+	char	*new;
+	size_t	size;
 	size_t	i;
 
-	if (!s)
-		return (NULL);
-	if (ft_strlen(s) <= start)
-		return (ft_strdup(""));
-	if (len > (ft_strlen(s) - start))
-		len = ft_strlen(s) - start;
-	sub = (char *)ft_malloc((len + 1) * sizeof(char), 1);
-	if (!sub)
-		return (NULL);
 	i = 0;
-	while (i < len && start < ft_strlen(s))
+	size = ft_strlen(s1);
+	new = (char *)malloc(sizeof(char) * (size + 1));
+	if (!new)
+		return (NULL);
+	while (i < size)
 	{
-		*(sub + i) = *(s + start);
-		start++;
+		new[i] = s1[i];
 		i++;
 	}
-	*(sub + i) = '\0';
-	return (sub);
+	new[i] = '\0';
+	return (new);
 }
