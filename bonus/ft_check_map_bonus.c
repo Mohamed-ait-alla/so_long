@@ -6,7 +6,7 @@
 /*   By: mait-all <mait-all@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:30:19 by mait-all          #+#    #+#             */
-/*   Updated: 2025/02/15 16:28:17 by mait-all         ###   ########.fr       */
+/*   Updated: 2025/06/01 09:39:43 by mait-all         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_error(char **map, int i, int flag)
 {
 	char	*flag_msg[5];
 
-	flag_msg[0] = ": One letter in these (EPC) is messed in map!\n";
+	flag_msg[0] = ": One letter in these (EPC) "
+		"is messed OR doubled in map!\n";
 	flag_msg[1] = ": Map is not rectangular!\n";
 	flag_msg[2] = ": Map is not closed by walls!\n";
 	flag_msg[3] = ": Map has a not valid character!\n";
