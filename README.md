@@ -71,44 +71,44 @@ Example:
 ```
 
 ## 📁 Project Structure
-
-so_long/<br>
-├── bonus/<br>
-│   ├── ft_\*\_bonus.c<br>
-│   └── so_long_bonus.c<br>
+```bash
+so_long/
+├── bonus/
+│   ├── ft_*_bonus.c
+│   └── so_long_bonus.c
+│
+├── ft_printf/
+│	├── ft_printf_utils.c
+│	├── ft_printf.c
+│   └── ft_printf.h
+│
+├── get_next_line/
+│   ├── get_next_line.c
+│   ├── get_next_line_utils.c
+│   └── get_next_line.h
+│
+├── Includes/
+│	├── so_long_bonus.h
+│   └── so_long.h
+│
+├── libft/
+│   ├── ft_*.c
+│   ├── libft.c
+│   └── Makefile
+│
+├── maps/
+│   └── *.ber
+│
+├── srcs/
+│   ├── ft_*.c
+│   └── so_long.c
+│
+├── textures/
+│   └── *.xpm
 │<br>
-├── ft_printf/<br>
-│	├── ft_printf_utils.c<br>
-│	├── ft_printf.c<br>
-│   └── ft_printf.h<br>
-│<br>
-├── get_next_line/<br>
-│   ├── get_next_line.c<br>
-│   ├── get_next_line_utils.c<br>
-│   └── get_next_line.h<br>
-│<br>
-├── Includes/<br>
-│	├── so_long_bonus.h<br>
-│   └── so_long.h<br>
-│<br>
-├── libft/<br>
-│   ├── ft_\*.c<br>
-│   ├── libft.c<br>
-│   └── Makefile<br>
-│<br>
-├── maps/<br>
-│   └── *.ber<br>
-│<br>
-├── srcs/<br>
-│   ├── ft_\*.c<br>
-│   └── so_long.c<br>
-│<br>
-├── textures/<br>
-│   └── *.xpm<br>
-│<br>
-├── Makefile<br>
-└── README.md<br>
-
+├── Makefile
+└── README.md
+```
 ## 📎 License
 
 This project is part of the 42 School curriculum.
