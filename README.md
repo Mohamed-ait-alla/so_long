@@ -105,6 +105,7 @@ so_long/<br>
 │<br>
 ├── textures/<br>
 │   └── *.xpm<br>
+│<br>
 ├── Makefile<br>
 └── README.md<br>
 
